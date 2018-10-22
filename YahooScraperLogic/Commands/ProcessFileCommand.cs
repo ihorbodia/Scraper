@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
 using WatiN.Core;
+using YahooFinanceApi;
 using YahooScraperLogic.ViewModels;
 
 namespace YahooScraperLogic.Commands
@@ -49,17 +50,23 @@ namespace YahooScraperLogic.Commands
             };
             //https://finance.yahoo.com/quote/OMV.VI/history?period1=1490997600&period2=1522188000&interval=1d&filter=history&frequency=1d
 
-            IE ie = new IE();
-            ie.GoTo("https://finance.yahoo.com/quote/OMV.VI/history?period1=1490997600&period2=1522188000&interval=1d&filter=history&frequency=1d");
-            try
+            //IE ie = new IE();
+            //ie.GoTo("https://finance.yahoo.com/quote/OMV.VI/history?period1=1490997600&period2=1522188000&interval=1d&filter=history&frequency=1d");
+            //try
+            //{
+            //    ie.Button(Find.ByValue("OK")).Click();
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex);
+            //}
+            //ie.Link(Find.ByText("Download Data")).Click();
+
+            var history = await Yahoo.GetHistoricalAsync("AAPL", new DateTime(2016, 1, 1), new DateTime(2016, 7, 1));
+            foreach (var candle in history)
             {
-                ie.Button(Find.ByValue("OK")).Click();
+                Console.WriteLine($"DateTime: {candle.DateTime}, Open: {candle.Open}, High: {candle.High}, Low: {candle.Low}, Close: {candle.Close}, Volume: {candle.Volume}, AdjustedClose: {candle.AdjustedClose}");
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-            ie.Link(Find.ByText("Download Data")).Click();
 
             //LoadHtmlWithBrowser("https://finance.yahoo.com/quote/OMV.VI/history?period1=1490997600&period2=1522188000&interval=1d&filter=history&frequency=1d");
 
