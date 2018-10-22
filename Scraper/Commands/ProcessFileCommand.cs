@@ -8,7 +8,7 @@ using Sraper.Common;
 
 namespace ScraperGUI.Commands
 {
-    class ProcessFileCommand : ICommand
+    internal class ProcessFileCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
         readonly MainViewModel parent;

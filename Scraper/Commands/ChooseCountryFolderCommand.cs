@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace ScraperGUI.Commands
 {
-    public class ChooseCountryFolderCommand : ICommand
+    internal class ChooseCountryFolderCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
         readonly MainViewModel parent;

@@ -1,30 +1,30 @@
-﻿using ScraperGUI.Commands;
-using Sraper.Common;
+﻿using Sraper.Common;
 using System.ComponentModel;
 using System.Windows.Input;
+using YahooScraperLogic.Commands;
 
-namespace Scraper.ViewModel
+namespace YahooScraperLogic.ViewModels
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class YahooScraperViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private string _filePathLabel;
         private string _filePathLabelData;
 
-        private string _countryFolderPathLabel;
-        private string _countryFolderPathLabelData;
+        private string _folderForStoringFilesLabel;
+        private string _folderForStoringFilesLabelData;
 
         private string _fileProcessingLabel;
         private string _fileProcessingLabelData;
 
-        public MainViewModel()
+        public YahooScraperViewModel()
         {
             ProcessFileCommand = new ProcessFileCommand(this);
-            ChooseCountryFolderCommand = new ChooseCountryFolderCommand(this);
+            ChooseCountryFolderCommand = new ChooseFolderForStoringCommand(this);
             ChooseFileCommand = new ChooseFileCommand(this);
             FilePathLabel = StringConsts.FilePathLabelConst;
             FileProcessingLabel = StringConsts.FileProcessingLabelConst;
-            CountryFolderPathLabel = StringConsts.CountryFolderPathLabelConst;
+            FolderForStoringFilesLabel = StringConsts.CountryFolderPathLabelConst;
             FileProcessingLabelData = string.Empty;
         }
 
@@ -62,6 +62,7 @@ namespace Scraper.ViewModel
                 }
             }
         }
+
         public string FileProcessingLabel
         {
             get
@@ -92,33 +93,34 @@ namespace Scraper.ViewModel
                 }
             }
         }
-        public string CountryFolderPathLabel
+
+        public string FolderForStoringFilesLabel
         {
             get
             {
-                return _countryFolderPathLabel;
+                return _folderForStoringFilesLabel;
             }
             private set
             {
                 if (_filePathLabel != value)
                 {
-                    _countryFolderPathLabel = value;
-                    RaisePropertyChanged(nameof(CountryFolderPathLabel));
+                    _folderForStoringFilesLabel = value;
+                    RaisePropertyChanged(nameof(FolderForStoringFilesLabel));
                 }
             }
         }
-        public string CountryFolderPathLabelData
+        public string FolderForStoringFilesLabelData
         {
             get
             {
-                return _countryFolderPathLabelData;
+                return _folderForStoringFilesLabelData;
             }
             set
             {
-                if (_countryFolderPathLabelData != value)
+                if (_folderForStoringFilesLabelData != value)
                 {
-                    _countryFolderPathLabelData = value;
-                    RaisePropertyChanged(nameof(CountryFolderPathLabelData));
+                    _folderForStoringFilesLabelData = value;
+                    RaisePropertyChanged(nameof(FolderForStoringFilesLabelData));
                 }
             }
         }

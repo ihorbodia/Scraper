@@ -1,15 +1,15 @@
-﻿using Scraper.ViewModel;
-using Sraper.Common;
+﻿using Sraper.Common;
 using System;
 using System.Windows.Input;
+using YahooScraperLogic.ViewModels;
 
-namespace ScraperGUI.Commands
+namespace YahooScraperLogic.Commands
 {
-    internal class ChooseFileCommand : ICommand
+    public class ChooseFolderForStoringCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
-        readonly MainViewModel parent;
-        public ChooseFileCommand(MainViewModel parent)
+        readonly YahooScraperViewModel parent;
+        public ChooseFolderForStoringCommand(YahooScraperViewModel parent)
         {
             this.parent = parent;
             parent.PropertyChanged += delegate { CanExecuteChanged?.Invoke(this, EventArgs.Empty); };
@@ -21,15 +21,15 @@ namespace ScraperGUI.Commands
 
         public void Execute(object parameter)
         {
-            string chosenPath = FilesHelper.SelectFile();
+            string chosenPath = FilesHelper.SelectFolder();
             if (!string.IsNullOrEmpty(chosenPath.Trim()))
             {
-                parent.FilePathLabelData = chosenPath;
-                if (!string.IsNullOrEmpty(parent.CountryFolderPathLabelData) && !string.IsNullOrEmpty(parent.FilePathLabelData))
+                parent.FolderForStoringFilesLabelData = chosenPath;
+                if (!string.IsNullOrEmpty(parent.FolderForStoringFilesLabelData) && !string.IsNullOrEmpty(parent.FilePathLabelData))
                 {
                     parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_CanProcess;
                 }
-                if (string.IsNullOrEmpty(parent.CountryFolderPathLabelData))
+                if (string.IsNullOrEmpty(parent.FolderForStoringFilesLabelData))
                 {
                     parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ChooseFolder;
                 }

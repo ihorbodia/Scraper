@@ -7,7 +7,34 @@ namespace Sraper.Common.Models
 {
 	public static class WebHelper
 	{
-		public static HtmlDocument GetPageData(string URL)
+
+        public static HtmlDocument GetYahooPageData(string URL)
+        {
+            if (string.IsNullOrEmpty(URL))
+            {
+                return null;
+            }
+            string html = string.Empty;
+            html = URL;
+            Encoding iso = Encoding.GetEncoding("iso-8859-1");
+            HtmlWeb web = new HtmlWeb()
+            {
+                AutoDetectEncoding = false,
+                OverrideEncoding = iso,
+            };
+            HtmlDocument htmlDoc = null;
+            try
+            {
+                htmlDoc = web.Load(html);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            return htmlDoc;
+        }
+
+        public static HtmlDocument GetPageData(string URL)
 		{
 			if (string.IsNullOrEmpty(URL))
 			{

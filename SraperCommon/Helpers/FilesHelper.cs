@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Data;
+using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -37,6 +39,39 @@ namespace Sraper.Common
             }
             return selectedFolderName;
         }
+
+        public static DataTable GetDataTableFromExcel(string path, bool hasHeader = true)
+        {
+            using (var pck = new OfficeOpenXml.ExcelPackage())
+            {
+                using (var stream = File.OpenRead(path))
+                {
+                    pck.Load(stream);
+                }
+                var ws = pck.Workbook.Worksheets.First();
+                DataTable tbl = new DataTable();
+                for (int i = 1; i <= ws.Dimension.End.Column; i++)
+                {
+                    tbl.Columns.Add();
+                }
+                var startRow = hasHeader ? 2 : 1;
+                for (int rowNum = startRow; rowNum <= ws.Dimension.End.Row; rowNum++)
+                {
+                    var wsRow = ws.Cells[rowNum, 1, rowNum, ws.Dimension.End.Column];
+                    if (string.IsNullOrEmpty(ws.Cells[rowNum, 1].Text))
+                    {
+                        break;
+                    }
+                    DataRow row = tbl.Rows.Add();
+                    foreach (var cell in wsRow)
+                    {
+                        row[cell.Start.Column - 1] = cell.Text;
+                    }
+                }
+                return tbl;
+            }
+        }
+
 
         public static string CleanCompanyName(string data)
         {

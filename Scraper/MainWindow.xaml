@@ -3,11 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Scraper"
-        xmlns:views="clr-namespace:Scraper.Views"
+        xmlns:yahooSraper="clr-namespace:YahooScraperLogic.Views;assembly=YahooScraperLogic"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        WindowStartupLocation="CenterScreen" 
+        Title="Yahoo scraper" 
+        SizeToContent="WidthAndHeight"
+        MinHeight="250" 
+        MinWidth="450" Closing="Window_Closing"
+        >
     <Grid>
-        <views:MainView x:Name ="MainView" Width="auto" Height="auto"/>
+        <yahooSraper:YahooScraperView x:Name ="MainView" Width="auto" Height="auto"/>
     </Grid>
 </Window>
