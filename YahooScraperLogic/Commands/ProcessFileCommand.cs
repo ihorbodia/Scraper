@@ -1,18 +1,14 @@
 ﻿using HtmlAgilityPack;
-using ScrapySharp.Network;
 using Sraper.Common;
-using Sraper.Common.Models;
 using System;
 using System.Data;
+using System.IO;
 using System.Net;
-using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Threading;
-
+using WatiN.Core;
 using YahooScraperLogic.ViewModels;
 
 namespace YahooScraperLogic.Commands
@@ -53,27 +49,28 @@ namespace YahooScraperLogic.Commands
             };
             //https://finance.yahoo.com/quote/OMV.VI/history?period1=1490997600&period2=1522188000&interval=1d&filter=history&frequency=1d
 
-            ScrapingBrowser Browser = new ScrapingBrowser();
+            IE ie = new IE();
+            ie.GoTo("https://finance.yahoo.com/quote/OMV.VI/history?period1=1490997600&period2=1522188000&interval=1d&filter=history&frequency=1d");
+            try
+            {
+                ie.Button(Find.ByValue("OK")).Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            ie.Link(Find.ByText("Download Data")).Click();
 
-            WebPage PageResult = await Browser.NavigateToPageAsync(new Uri("https://finance.yahoo.com/quote/OMV.VI/history?period1=1490997600&period2=1522188000&interval=1d&filter=history&frequency=1d"));
-            HtmlNodeCollection rawHTML = PageResult.Html.SelectNodes("//span[@class='Fl(end) Pos(r) T(-6px)']");
-            //Console.WriteLine(rawHTML.InnerHtml);
+            //LoadHtmlWithBrowser("https://finance.yahoo.com/quote/OMV.VI/history?period1=1490997600&period2=1522188000&interval=1d&filter=history&frequency=1d");
 
-            //HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"https://finance.yahoo.com/quote/OTS.VI/history?period1=1490997600&period2=1522188000&interval=1d&filter=history&frequency=1d");
-            //request.CookieContainer = new CookieContainer();
-
-            //HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-            //Cookie cook = response.Cookies[0];
 
             //using (WebClient webClient = new WebClient())
             //{
-            //    Uri url = new Uri(@"https://query1.finance.yahoo.com/v7/finance/download/OTS.VI?period1=1490997600&period2=1522188000&interval=1d&events=history&crumb=1RG5lY0Nras");
-            //    string downloadToDirectory = parent.FolderForStoringFilesLabelData + "\\SEM.VI.csv";
-            //    webClient.Headers.Add(HttpRequestHeader.Cookie, string.Format("{0}={1}", cook.Name, cook.Value));
+            //    Uri url = new Uri(@"https://finance.yahoo.com/quote/OMV.VI/history?period1=1490997600&period2=1522188000&interval=1d&filter=history&frequency=1d");
+            //    //string downloadToDirectory = parent.FolderForStoringFilesLabelData + "\\SEM.VI.csv";
             //    webClient.UseDefaultCredentials = true;
             //    webClient.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");
-            //    webClient.DownloadFile(url, downloadToDirectory);
+            //    var test = webClient.DownloadString(url);
             //}
             try
             {
@@ -115,6 +112,52 @@ namespace YahooScraperLogic.Commands
         private async Task DownloadMultipleFilesAsync(EnumerableRowCollection<DataRow> rows)
         {
             await Task.WhenAll(rows.Select(row => DownloadFileAsync(row)));
+        }
+
+
+
+        private void LoadHtmlWithBrowser(String url)
+        {
+            WebBrowser webBrowser = new WebBrowser();
+            
+            webBrowser.ScriptErrorsSuppressed = true;
+            webBrowser.Navigate(url);
+
+            waitTillLoad(webBrowser);
+
+            HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+            var documentAsIHtmlDocument3 = (mshtml.IHTMLDocument3)webBrowser.Document.DomDocument;
+            StringReader sr = new StringReader(documentAsIHtmlDocument3.documentElement.outerHTML);
+            doc.Load(sr);
+        }
+
+        private void waitTillLoad(WebBrowser webBrControl)
+        {
+            WebBrowserReadyState loadStatus;
+            int waittime = 100000;
+            int counter = 0;
+            while (true)
+            {
+                loadStatus = webBrControl.ReadyState;
+                Application.DoEvents();
+                if ((counter > waittime) || (loadStatus == WebBrowserReadyState.Uninitialized) || (loadStatus == WebBrowserReadyState.Loading) || (loadStatus == WebBrowserReadyState.Interactive))
+                {
+                    break;
+                }
+                counter++;
+            }
+
+            counter = 0;
+            while (true)
+            {
+                loadStatus = webBrControl.ReadyState;
+                Application.DoEvents();
+                if (loadStatus == WebBrowserReadyState.Complete && webBrControl.IsBusy != true)
+                {
+                    break;
+                }
+                counter++;
+            }
         }
     }
 }
