@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" 
         Title="Yahoo scraper" 
+        ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"
         MinHeight="250" 
         MinWidth="450" Closing="Window_Closing"

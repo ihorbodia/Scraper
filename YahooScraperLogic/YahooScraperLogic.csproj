@@ -88,7 +88,6 @@
     <Compile Include="Views\YahooScraperView.xaml.cs">
       <DependentUpon>YahooScraperView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="YahooScrapperLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

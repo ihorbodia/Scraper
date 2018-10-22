@@ -11,5 +11,7 @@
         public const string FileProcessingLabelData_ChooseFolder = "Choose folder";
         public const string FileProcessingLabelData_Finish = "Finished";
         public const string FileProcessingLabelData_ErrorMessage = "Something wrong";
+        public const string DateToLabelConst = "Date to:";
+        public const string DateFromLabelConst = "Date from:";
     }
 }

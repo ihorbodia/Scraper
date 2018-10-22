@@ -1,4 +1,5 @@
 ﻿using Sraper.Common;
+using System;
 using System.ComponentModel;
 using System.Windows.Input;
 using YahooScraperLogic.Commands;
@@ -11,11 +12,17 @@ namespace YahooScraperLogic.ViewModels
         private string _filePathLabel;
         private string _filePathLabelData;
 
+        private string _dateFromlabel;
+        private string _dateTolabel;
+
         private string _folderForStoringFilesLabel;
         private string _folderForStoringFilesLabelData;
 
         private string _fileProcessingLabel;
         private string _fileProcessingLabelData;
+
+        private DateTime _selectedDateFrom;
+        private DateTime _selectedDateTo;
 
         public YahooScraperViewModel()
         {
@@ -26,11 +33,77 @@ namespace YahooScraperLogic.ViewModels
             FileProcessingLabel = StringConsts.FileProcessingLabelConst;
             FolderForStoringFilesLabel = StringConsts.CountryFolderPathLabelConst;
             FileProcessingLabelData = string.Empty;
+            DateFromLabel = StringConsts.DateFromLabelConst;
+            DateToLabel = StringConsts.DateToLabelConst;
+            SelectedDateFrom = DateTime.Now;
+            SelectedDateTo = DateTime.Now;
         }
 
         public ICommand ProcessFileCommand { get; private set; }
         public ICommand ChooseCountryFolderCommand { get; private set; }
         public ICommand ChooseFileCommand { get; private set; }
+
+        public DateTime SelectedDateFrom
+        {
+            get
+            {
+                return _selectedDateFrom;
+            }
+            set
+            {
+                if (_selectedDateFrom != value)
+                {
+                    _selectedDateFrom = value;
+                    RaisePropertyChanged(nameof(SelectedDateFrom));
+                }
+            }
+        }
+        public DateTime SelectedDateTo
+        {
+            get
+            {
+                return _selectedDateTo;
+            }
+            set
+            {
+                if (_selectedDateTo != value)
+                {
+                    _selectedDateTo = value;
+                    RaisePropertyChanged(nameof(SelectedDateTo));
+                }
+            }
+        }
+
+        public string DateFromLabel
+        {
+            get
+            {
+                return _dateFromlabel;
+            }
+            private set
+            {
+                if (_dateFromlabel != value)
+                {
+                    _dateFromlabel = value;
+                    RaisePropertyChanged(nameof(DateFromLabel));
+                }
+            }
+        }
+        public string DateToLabel
+        {
+            get
+            {
+                return _dateTolabel;
+            }
+            set
+            {
+                if (_dateTolabel != value)
+                {
+                    _dateTolabel = value;
+                    RaisePropertyChanged(nameof(DateToLabel));
+                }
+            }
+        }
 
         public string FilePathLabel
         {

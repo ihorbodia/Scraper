@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d"
+             
              Height="250" 
              Width="450">
     <Grid>
@@ -11,15 +12,28 @@
             <RowDefinition Height="5*"/>
             <RowDefinition Height="35"/>
         </Grid.RowDefinitions>
-        <Border BorderBrush="Gray" Margin="5,0,5,0" BorderThickness="1" CornerRadius="1" ></Border>
-        <Canvas Grid.Row="0" Margin="10,5,0,0">
-            <TextBlock Canvas.Top="0" Text="{Binding Path=FilePathLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
-            <TextBlock Canvas.Top="15" Text="{Binding Path=FilePathLabelData, Mode=OneWay}" Width="auto" TextWrapping="WrapWithOverflow" Height="25"></TextBlock>
-            <TextBlock Canvas.Top="40" Text="{Binding Path=FolderForStoringFilesLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
-            <TextBlock Canvas.Top="55" Text="{Binding Path=FolderForStoringFilesLabelData, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
-            <TextBlock Canvas.Bottom="0" Text="{Binding Path=FileProcessingLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
-            <TextBlock Canvas.Bottom="0" Canvas.Left="40" Text="{Binding Path=FileProcessingLabelData, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
-        </Canvas>
+
+        <Border BorderBrush="Gray" Margin="5,5,5,0" BorderThickness="1" CornerRadius="1" ></Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="130"/>
+            </Grid.ColumnDefinitions>
+            <Canvas Grid.Column="0" Margin="10,10,5,0">
+                <TextBlock Canvas.Top="0" Text="{Binding Path=FilePathLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
+                <TextBlock Canvas.Top="15" Text="{Binding Path=FilePathLabelData, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="300" Width="auto"></TextBlock>
+                <TextBlock Canvas.Top="40" Text="{Binding Path=FolderForStoringFilesLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
+                <TextBlock Canvas.Top="55" Text="{Binding Path=FolderForStoringFilesLabelData, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
+                <TextBlock Canvas.Bottom="0" Text="{Binding Path=FileProcessingLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
+                <TextBlock Canvas.Bottom="0" Canvas.Left="40" Text="{Binding Path=FileProcessingLabelData, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
+            </Canvas>
+            <Canvas Grid.Column="1" Margin="10,10,5,0">
+                <TextBlock Canvas.Top="0" Text="{Binding Path=DateFromLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
+                <DatePicker Canvas.Top="20" SelectedDate="{Binding SelectedDateFrom}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <TextBlock Canvas.Top="50" Text="{Binding Path=DateToLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
+                <DatePicker Canvas.Top="70" SelectedDate="{Binding SelectedDateTo}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            </Canvas>
+        </Grid>
         <DockPanel Grid.Row="1">
             <Button Height="25" Command="{Binding ChooseFileCommand}" Content="Choose file" Width="90" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
             <Button Height="25" Command="{Binding ChooseCountryFolderCommand}" Content="Choose folder" Width="90" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
