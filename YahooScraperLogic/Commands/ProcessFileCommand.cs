@@ -39,10 +39,14 @@ namespace YahooScraperLogic.Commands
                 return;
             }
             parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_Processing;
-            var table = FilesHelper.GetDataTableFromExcel(parent.FilePathLabelData).AsEnumerable();
+            var table = FilesHelper.GetDataTableFromExcel(parent.FilePathLabelData);
+            if (table == null)
+            {
+                return;
+            }
             try
             {
-                await DownloadMultipleFilesAsync(table);
+                await DownloadMultipleFilesAsync(table.AsEnumerable());
                 parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_Finish;
                 Console.WriteLine(StringConsts.FileProcessingLabelData_Finish);
             }

@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -44,10 +45,26 @@ namespace Sraper.Common
         {
             using (var pck = new OfficeOpenXml.ExcelPackage())
             {
-                using (var stream = File.OpenRead(path))
+                try
                 {
-                    pck.Load(stream);
+                    using (var stream = File.OpenRead(path))
+                    {
+                        pck.Load(stream);
+                    }
                 }
+                catch (IOException ex)
+                {
+                    var result = MessageBox.Show("Program cannot acces to excel file, try to close file and click OK", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                    if (result == DialogResult.OK)
+                    {
+                        GetDataTableFromExcel(path);
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+               
                 var ws = pck.Workbook.Worksheets.First();
                 DataTable tbl = new DataTable();
                 for (int i = 1; i <= ws.Dimension.End.Column; i++)
