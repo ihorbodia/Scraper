@@ -70,7 +70,7 @@ namespace YahooScraperLogic.Commands
                     foreach (var item in history)
                     {
                         sb.AppendLine(string.Format("{0},{1},{2},{3},{4},{5},{6}",
-                            item.DateTime.ToString("yyyy-MM-dd"),
+                            item.DateTime.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture),
                             commaToDot(item.Open),
                             commaToDot(item.High),
                             commaToDot(item.Low),
