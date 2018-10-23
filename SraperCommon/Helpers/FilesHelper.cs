@@ -54,17 +54,12 @@ namespace Sraper.Common
                 }
                 catch (IOException ex)
                 {
-                    var result = MessageBox.Show("Program cannot acces to excel file, try to close file and click OK", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
-                    if (result == DialogResult.OK)
-                    {
-                        GetDataTableFromExcel(path);
-                    }
-                    else
-                    {
-                        return null;
-                    }
+                    MessageBox.Show("Program cannot acces to excel file, try to close file and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-               
+                if (pck.Workbook.Worksheets.Count == 0)
+                {
+                    return null;
+                }
                 var ws = pck.Workbook.Worksheets.First();
                 DataTable tbl = new DataTable();
                 for (int i = 1; i <= ws.Dimension.End.Column; i++)

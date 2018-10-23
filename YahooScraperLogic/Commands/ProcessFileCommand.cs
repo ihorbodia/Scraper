@@ -6,9 +6,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
-using System.Windows.Threading;
 using YahooFinanceApi;
 using YahooScraperLogic.ViewModels;
 
@@ -40,20 +38,19 @@ namespace YahooScraperLogic.Commands
             }
             parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_Processing;
             var table = FilesHelper.GetDataTableFromExcel(parent.FilePathLabelData);
-            if (table == null)
+            if (table != null)
             {
-                return;
+                try
+                {
+                    await DownloadMultipleFilesAsync(table.AsEnumerable());
+                }
+                catch (Exception)
+                {
+                    parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ErrorMessage;
+                }
             }
-            try
-            {
-                await DownloadMultipleFilesAsync(table.AsEnumerable());
-                parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_Finish;
-                Console.WriteLine(StringConsts.FileProcessingLabelData_Finish);
-            }
-            catch (Exception)
-            {
-                parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ErrorMessage;
-            }
+            parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_Finish;
+            Console.WriteLine(StringConsts.FileProcessingLabelData_Finish);
         }
 
         private async Task DownloadFileAsync(DataRow row)
@@ -70,17 +67,13 @@ namespace YahooScraperLogic.Commands
                         parent.SelectedDateTo.Month,
                         parent.SelectedDateTo.Day), Period.Daily);
                     StringBuilder sb = new StringBuilder();
-                    sb.AppendLine("Date,Open,High,Low,Close,Adj Close,Volume");
+                    sb.AppendLine("Date;Close;Volume");
                     foreach (var item in history)
                     {
-                        sb.AppendLine(string.Format("{0},{1},{2},{3},{4},{5},{6}",
-                            item.DateTime.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture),
-                            commaToDot(item.Open),
-                            commaToDot(item.High),
-                            commaToDot(item.Low),
-                            commaToDot(item.Close),
-                            commaToDot(item.AdjustedClose),
-                            commaToDot(item.Volume)));
+                        sb.AppendLine(string.Format("{0};{1};{2}",
+                            item.DateTime.ToString("dd/MM/yyyy", CultureInfo.GetCultureInfo("fr-FR")),
+                            item.Close,
+                            item.Volume));
                     }
                     File.WriteAllText(Path.Combine(parent.FolderForStoringFilesLabelData, row[1]+".csv"), sb.ToString());
                 }
@@ -94,10 +87,6 @@ namespace YahooScraperLogic.Commands
         private async Task DownloadMultipleFilesAsync(EnumerableRowCollection<DataRow> rows)
         {
             await Task.WhenAll(rows.Select(row => DownloadFileAsync(row)));
-        }
-        private string commaToDot(decimal value)
-        {
-            return value.ToString().Replace(',','.');
         }
     }
 }
