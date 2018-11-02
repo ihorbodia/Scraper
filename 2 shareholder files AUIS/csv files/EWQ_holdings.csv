@@ -1,0 +1,96 @@
+iShares MSCI France ETF															
+"Inception Date,""Mar 12, 1996"""															
+"Fund Holdings as of,""Oct 26, 2018"""															
+"Total Net Assets,""749,572,393.00"""															
+"Shares Outstanding,""26,800,000.00"""															
+"Stock,""-"""															
+"Bond,""-"""															
+"Cash,""-"""															
+"Other,""-"""															
+ 															
+Ticker	Name	Asset Class	Weight (%)	Price	Shares	Market Value	Notional Value	Sector	SEDOL	ISIN	Exchange	Country	Currency	Market Currency	FX Rate
+FP	TOTAL SA	Equity	9,55	57,57	1 243 319,00	71 576 434,44	71 576 434,44	Energy	B15C557	FR0000120271	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+SAN	SANOFI SA	Equity	6,6	84,66	584 155,00	49 457 332,95	49 457 332,95	Health Care	5671735	FR0000120578	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+MC	LVMH	Equity	5,76	298,42	144 586,00	43 147 176,64	43 147 176,64	Consumer Discretionary	4061412	FR0000121014	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+AIR	AIRBUS GROUP	Equity	4,41	109,33	302 059,00	33 023 312,28	33 023 312,28	Industrials	4012250	NL0000235190	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+BNP	BNP PARIBAS SA	Equity	4,16	53,3	584 409,00	31 151 865,64	31 151 865,64	Financials	7309681	FR0000131104	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+OR	LOREAL SA	Equity	3,77	215,02	131 320,00	28 235 921,47	28 235 921,47	Consumer Staples	4057808	FR0000120321	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+AI	AIR LIQUIDE SA	Equity	3,6	121,27	222 620,00	26 996 322,07	26 996 322,07	Materials	B1YXBJ7	FR0000120073	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+CS	AXA SA	Equity	3,34	24,79	1 008 115,00	24 994 573,49	24 994 573,49	Financials	7088429	FR0000120628	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+DG	VINCI SA	Equity	3,09	88,05	262 848,00	23 144 594,90	23 144 594,90	Industrials	B1XH026	FR0000125486	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+BN	DANONE SA	Equity	3,04	71,18	319 655,00	22 752 828,73	22 752 828,73	Consumer Staples	B1Y9TB3	FR0000120644	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+SAF	SAFRAN SA	Equity	2,89	124,73	173 356,00	21 623 454,05	21 623 454,05	Industrials	B058TZ6	FR0000073272	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+SU	SCHNEIDER ELECTRIC	Equity	2,64	69,84	283 678,00	19 811 393,81	19 811 393,81	Industrials	4834108	FR0000121972	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+KER	KERING SA	Equity	2,25	429,12	39 376,00	16 897 134,25	16 897 134,25	Consumer Discretionary	5505072	FR0000121485	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+RI	PERNOD RICARD SA	Equity	2,23	151,68	110 333,00	16 735 581,96	16 735 581,96	Consumer Staples	4682329	FR0000120693	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+ORA	ORANGE SA	Equity	2,15	15,56	1 036 624,00	16 130 418,07	16 130 418,07	Communication	5176177	FR0000133308	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+EL	ESSILORLUXOTTICA SA	Equity	1,98	136,96	108 166,00	14 814 163,60	14 814 163,60	Health Care	7212477	FR0000121667	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+GLE	SOCIETE GENERALE SA	Equity	1,96	36,81	399 390,00	14 700 071,55	14 700 071,55	Financials	5966516	FR0000130809	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+VIV	VIVENDI SA	Equity	1,74	24,17	538 745,00	13 023 450,85	13 023 450,85	Communication	4834777	FR0000127771	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+URW	WFD UNIBAIL RODAMCO STAPLED UNITS	Equity	1,71	178,33	71 685,00	12 783 938,88	12 783 938,88	Real Estate	BFYM460	FR0013326246	Euronext Amsterdam	France	USD	EUR	0,88
+ENGI	ENGIE SA	Equity	1,65	13,05	949 025,00	12 382 544,85	12 382 544,85	Utilities	B0C2CQ3	FR0010208488	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+CAP	CAPGEMINI	Equity	1,3	116,77	83 173,00	9 712 529,99	9 712 529,99	Information Technology	4163437	FR0000125338	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+SGO	COMPAGNIE DE SAINT GOBAIN SA	Equity	1,26	36,4	258 871,00	9 422 120,15	9 422 120,15	Industrials	7380482	FR0000125007	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+RMS	HERMES INTERNATIONAL	Equity	1,25	568,41	16 464,00	9 358 323,56	9 358 323,56	Consumer Discretionary	5253973	FR0000052292	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+LR	LEGRAND SA	Equity	1,19	64,4	138 232,00	8 902 488,04	8 902 488,04	Industrials	B11ZRK9	FR0010307819	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+ML	MICHELIN	Equity	1,18	99,45	88 617,00	8 812 641,01	8 812 641,01	Consumer Discretionary	4588364	FR0000121261	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+DSY	DASSAULT SYSTEMES	Equity	1,12	124,51	67 342,00	8 384 548,71	8 384 548,71	Information Technology	5330047	FR0000130650	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+MT	ARCELORMITTAL SA	Equity	1,12	24,2	345 954,00	8 372 816,50	8 372 816,50	Materials	BYPBS67	LU1598757687	Euronext Amsterdam	France	USD	EUR	0,88
+ACA	CREDIT AGRICOLE SA	Equity	1	12,7	591 533,00	7 514 316,22	7 514 316,22	Financials	7262610	FR0000045072	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+RNO	RENAULT SA	Equity	0,98	73,34	99 880,00	7 325 171,73	7 325 171,73	Consumer Discretionary	4712798	FR0000131906	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+HO	THALES SA	Equity	0,96	130,65	55 251,00	7 218 379,88	7 218 379,88	Industrials	4162791	FR0000121329	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+UG	PEUGEOT SA	Equity	0,95	23,39	305 599,00	7 147 691,22	7 147 691,22	Consumer Discretionary	7103526	FR0000121501	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+PUB	PUBLICIS GROUPE SA	Equity	0,82	57,1	107 858,00	6 158 977,73	6 158 977,73	Communication	4380429	FR0000130577	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+CA	CARREFOUR SA	Equity	0,76	18,93	301 840,00	5 712 683,38	5 712 683,38	Consumer Staples	5641567	FR0000120172	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+VIE	VEOLIA ENVIRON. SA	Equity	0,72	19,39	278 088,00	5 391 209,32	5 391 209,32	Utilities	4031879	FR0000124141	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+TEP	TELEPERFORMANCE	Equity	0,68	169,19	29 994,00	5 074 776,04	5 074 776,04	Industrials	5999330	FR0000051807	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+EDF	ELECTRICITE DE FRANCE SA	Equity	0,67	16,49	304 201,00	5 015 430,33	5 015 430,33	Utilities	B0NJJ17	FR0010242511	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+STM	STMICROELECTRONICS NV	Equity	0,66	13,89	355 908,00	4 945 253,04	4 945 253,04	Information Technology	5962332	NL0000226223	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+SW	SODEXO SA	Equity	0,62	99,17	47 196,00	4 680 592,55	4 680 592,55	Consumer Discretionary	7062713	FR0000121220	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+EDEN	EDENRED	Equity	0,6	36,75	122 771,00	4 511 767,46	4 511 767,46	Industrials	B62G1B5	FR0010908533	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+AC	ACCOR SA	Equity	0,58	44,85	97 594,00	4 376 627,52	4 376 627,52	Consumer Discretionary	5852842	FR0000120404	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+EN	BOUYGUES SA	Equity	0,54	35,91	113 640,00	4 080 589,55	4 080 589,55	Industrials	4002121	FR0000120503	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+FGR	EIFFAGE SA	Equity	0,53	96,35	41 534,00	4 001 951,13	4 001 951,13	Industrials	B13X013	FR0000130452	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+SESG	SES SA FDR SA	Equity	0,53	21	190 317,00	3 995 824,98	3 995 824,98	Communication	B00ZQQ2	LU0088087324	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+ATO	ATOS	Equity	0,53	80,96	49 313,00	3 992 279,88	3 992 279,88	Information Technology	5654781	FR0000051732	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+SCR	SCOR	Equity	0,53	46,18	85 468,00	3 946 536,22	3 946 536,22	Financials	B1LB9P6	FR0010411983	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+UBI	UBISOFT ENTERTAINMENT SA CAT A	Equity	0,52	95,19	40 810,00	3 884 860,04	3 884 860,04	Communication	B1L3CS6	FR0000054470	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+AKE	ARKEMA	Equity	0,48	101,49	35 401,00	3 592 956,63	3 592 956,63	Materials	B0Z5YZ2	FR0010313833	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+LI	KLEPIERRE REIT SA	Equity	0,47	33,11	106 173,00	3 515 483,16	3 515 483,16	Real Estate	7582556	FR0000121964	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+GFC	GECINA REIT SA	Equity	0,46	147,93	23 498,00	3 476 063,96	3 476 063,96	Real Estate	7742468	FR0010040865	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+ALO	ALSTOM SA	Equity	0,46	42,82	81 097,00	3 472 679,21	3 472 679,21	Industrials	B0DJ8Q5	FR0010220475	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+FR	VALEO SA	Equity	0,45	26,82	124 525,00	3 340 135,26	3 340 135,26	Consumer Discretionary	BDC5ST8	FR0013176526	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+ADP	AEROPORTS DE PARIS	Equity	0,43	208,42	15 496,00	3 229 695,92	3 229 695,92	Industrials	B164FY1	FR0010340141	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+BVI	BUREAU VERITAS SA	Equity	0,41	22,4	137 461,00	3 079 110,59	3 079 110,59	Industrials	B28DTJ6	FR0006174348	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+GET	GETLINK	Equity	0,41	12,55	242 582,00	3 045 139,61	3 045 139,61	Industrials	B292JQ9	FR0010533075	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+ERF	EUROFINS SCIENTIFIC	Equity	0,38	480,06	5 962,00	2 862 132,68	2 862 132,68	Health Care	5972643	FR0000038259	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+IPN	IPSEN	Equity	0,37	141,28	19 672,00	2 779 229,91	2 779 229,91	Health Care	B0R7JF1	FR0010259150	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+KN	NATIXIS SA	Equity	0,37	5,69	487 842,00	2 775 722,53	2 775 722,53	Financials	B1HDJL2	FR0000120685	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+SEV	SUEZ SA	Equity	0,37	14,12	195 067,00	2 754 767,58	2 754 767,58	Utilities	B3B8D04	FR0010613471	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+ING	INGENICO GROUP SA	Equity	0,31	75,02	30 744,00	2 306 493,55	2 306 493,55	Information Technology	4196897	FR0000125346	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+ETL	EUTELSAT COMMUNICATIONS	Equity	0,28	23,45	90 956,00	2 132 551,74	2 132 551,74	Communication	B0M7KJ7	FR0010221234	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+AM	DASSAULT AVIATION S.A.	Equity	0,28	1 627,12	1 305,00	2 123 389,71	2 123 389,71	Industrials	4067164	FR0000121725	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+EUR	EUR CASH	Cash	0,27	113,7	1 808 016,00	2 055 805,12	2 055 805,12	Cash and/or Derivatives	-	-	-	European Union	USD	EUR	0,88
+RXL	REXEL SA	Equity	0,26	12,4	157 668,00	1 955 009,14	1 955 009,14	Industrials	B1VP0K0	FR0010451203	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+COV	COVIVIO SA	Equity	0,26	99,66	19 525,00	1 945 908,99	1 945 908,99	Real Estate	7745638	FR0000064578	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+CNP	CNP ASSURANCES SA	Equity	0,26	21,62	89 309,00	1 930 442,66	1 930 442,66	Financials	5543986	FR0000120222	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+BOL	BOLLORE SA	Equity	0,25	4,18	455 035,00	1 900 918,59	1 900 918,59	Industrials	4572709	FR0000039299	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+AMUN	AMUNDI SA	Equity	0,25	58,79	31 735,00	1 865 557,37	1 865 557,37	Financials	BYZR014	FR0004125920	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+MF	WENDEL	Equity	0,24	127,35	14 415,00	1 835 744,48	1 835 744,48	Financials	7390113	FR0000121204	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+EO	FAURECIA SA	Equity	0,24	44,97	39 345,00	1 769 357,54	1 769 357,54	Consumer Discretionary	4400446	FR0000121147	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+RF	EURAZEO	Equity	0,22	71,01	23 712,00	1 683 760,01	1 683 760,01	Financials	7042395	FR0000121121	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+SK	SEB SA	Equity	0,22	140,77	11 723,00	1 650 209,08	1 650 209,08	Consumer Discretionary	4792132	FR0000121709	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+BIM	BIOMERIEUX SA	Equity	0,21	73,23	21 608,00	1 582 267,84	1 582 267,84	Health Care	BF0LBX7	FR0013280286	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+ILD	ILIAD SA	Equity	0,2	110,95	13 846,00	1 536 259,93	1 536 259,93	Communication	7759435	FR0004035913	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+ICAD	ICADE REIT SA	Equity	0,19	83,4	17 405,00	1 451 622,56	1 451 622,56	Real Estate	4554406	FR0000035081	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+RCO	REMY COINTREAU SA	Equity	0,18	117,57	11 787,00	1 385 809,02	1 385 809,02	Consumer Staples	4741714	FR0000130395	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+CO	CASINO GUICHARD PERRACHON SA	Equity	0,17	44,41	28 984,00	1 287 271,41	1 287 271,41	Consumer Staples	4178419	FR0000125585	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+BB	BIC SA	Equity	0,17	95,28	13 253,00	1 262 809,32	1 262 809,32	Industrials	5298781	FR0000120966	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+DEC	JCDECAUX SA	Equity	0,17	32,45	38 909,00	1 262 651,79	1 262 651,79	Communication	7136663	FR0000077919	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+NK	IMERYS SA	Equity	0,15	61,68	18 706,00	1 153 878,91	1 153 878,91	Materials	B011GL4	FR0000120859	Nyse Euronext - Euronext Paris	France	USD	EUR	0,88
+BLKFDS	BLK CSH FND TREASURY SL AGENCY	Money Market	0,03	1	238 822,00	238 821,75	238 821,75	Cash and/or Derivatives	-	US0669224778	-	United States	USD	USD	1
+WFFUT	CASH COLLATERAL EUR WFFUT	Cash Collateral and Margins	0,02	113,7	117 000,00	133 034,85	133 034,85	Cash and/or Derivatives	-	-	-	United States	USD	EUR	0,88
+EUR	EUR/USD	FX	0	1	-159 244,00	156,06	156,06	Cash and/or Derivatives	-	-	-	United States	USD	USD	0,88
+CFX8	CAC40 10 EURO NOV 18	Futures	0	5 643,74	36	0	2 031 749,16	Cash and/or Derivatives	-	FRENX2467558	Euronext Paris Monep	-	USD	EUR	0,88
+USD	USD CASH	Cash	-0,03	100	-256 252,00	-256 251,77	-256 251,77	Cash and/or Derivatives	-	-	-	United States	USD	USD	1
+ 															
