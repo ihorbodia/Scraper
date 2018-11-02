@@ -1,9 +1,10 @@
 ﻿using Sraper.Common;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.IO;
-using System.Net;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -12,11 +13,13 @@ using YahooScraperLogic.ViewModels;
 
 namespace YahooScraperLogic.Commands
 {
-    public class ProcessFileCommand : ICommand
+    public class YahooJapanFinanceDataProcessingCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
         readonly YahooScraperViewModel parent;
-        public ProcessFileCommand(YahooScraperViewModel parent)
+        List<DataRow> errors = new List<DataRow>();
+        object lockObject = new object();
+        public YahooJapanFinanceDataProcessingCommand(YahooScraperViewModel parent)
         {
             this.parent = parent;
             parent.PropertyChanged += delegate { CanExecuteChanged?.Invoke(this, EventArgs.Empty); };
@@ -44,7 +47,7 @@ namespace YahooScraperLogic.Commands
                 {
                     await DownloadMultipleFilesAsync(table.AsEnumerable());
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ErrorMessage;
                 }
@@ -57,36 +60,51 @@ namespace YahooScraperLogic.Commands
         {
             try
             {
-                using (WebClient webClient = new WebClient())
+                Yahoo.IgnoreEmptyRows = true;
+                var history = await Yahoo.GetHistoricalAsync(row[2].ToString() + ".T", new DateTime(
+                    parent.SelectedDateFrom.Year,
+                    parent.SelectedDateFrom.Month,
+                    parent.SelectedDateFrom.Day), new DateTime(
+                    parent.SelectedDateTo.Year,
+                    parent.SelectedDateTo.Month,
+                    parent.SelectedDateTo.Day), Period.Daily);
+                StringBuilder sb = new StringBuilder();
+                lock (lockObject)
                 {
-                    var history = await Yahoo.GetHistoricalAsync(row[2].ToString(), new DateTime(
-                        parent.SelectedDateFrom.Year,
-                        parent.SelectedDateFrom.Month,
-                        parent.SelectedDateFrom.Day), new DateTime(
-                        parent.SelectedDateTo.Year,
-                        parent.SelectedDateTo.Month,
-                        parent.SelectedDateTo.Day), Period.Daily);
-                    StringBuilder sb = new StringBuilder();
+                    
                     sb.AppendLine("Date;Close;Volume");
                     foreach (var item in history)
                     {
                         sb.AppendLine(string.Format("{0};{1};{2}",
-                            item.DateTime.ToString("dd/MM/yyyy", CultureInfo.GetCultureInfo("fr-FR")),
-                            item.Close,
-                            item.Volume));
+                        item.DateTime.ToString("dd/MM/yyyy", CultureInfo.GetCultureInfo("fr-FR")),
+                        item.Close,
+                        item.Volume));
                     }
-                    File.WriteAllText(Path.Combine(parent.FolderForStoringFilesLabelData, row[1]+".csv"), sb.ToString());
                 }
+                File.WriteAllText(Path.Combine(parent.FolderForStoringFilesLabelData, row[1] + ".csv"), sb.ToString());
             }
             catch (Exception ex)
             {
+                lock (lockObject)
+                {
+                    if (!ex.Message.Contains("Invalid ticker or endpoint for symbol"))
+                    {
+                        errors.Add(row);
+                    }
+                }
                 Console.WriteLine("Something wrong");
             }
         }
 
-        private async Task DownloadMultipleFilesAsync(EnumerableRowCollection<DataRow> rows)
+        private async Task DownloadMultipleFilesAsync(IEnumerable<DataRow> rows)
         {
             await Task.WhenAll(rows.Select(row => DownloadFileAsync(row)));
+            if (errors.Any())
+            {
+                List<DataRow> items = new List<DataRow>(errors);
+                errors.Clear();
+                await DownloadMultipleFilesAsync(items);
+            }
         }
     }
 }

@@ -26,7 +26,7 @@ namespace YahooScraperLogic.ViewModels
 
         public YahooScraperViewModel()
         {
-            ProcessFileCommand = new ProcessFileCommand(this);
+            ProcessFileCommand = new YahooJapanFinanceDataProcessingCommand(this);
             ChooseCountryFolderCommand = new ChooseFolderForStoringCommand(this);
             ChooseFileCommand = new ChooseFileCommand(this);
             FilePathLabel = StringConsts.FilePathLabelConst;
