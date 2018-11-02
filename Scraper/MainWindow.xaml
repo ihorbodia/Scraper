@@ -6,7 +6,7 @@
         xmlns:yahooSraper="clr-namespace:YahooScraperLogic.Views;assembly=YahooScraperLogic"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" 
-        Title="Yahoo scraper" 
+        Title="Yahoo Japan scraper" 
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"
         MinHeight="250" 
