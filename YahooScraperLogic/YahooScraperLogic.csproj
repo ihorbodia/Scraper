@@ -70,7 +70,7 @@
     <Reference Include="WindowsBase" />
     <Reference Include="YahooFinanceApi, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\YahooFinanceApi.dll</HintPath>
+      <HintPath>F:\Downloads\YahooFinanceApi.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

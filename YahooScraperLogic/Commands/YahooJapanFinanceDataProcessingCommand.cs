@@ -18,6 +18,7 @@ namespace YahooScraperLogic.Commands
         public event EventHandler CanExecuteChanged;
         readonly YahooScraperViewModel parent;
         List<DataRow> errors = new List<DataRow>();
+		int counter = 0;
         object lockObject = new object();
         public YahooJapanFinanceDataProcessingCommand(YahooScraperViewModel parent)
         {
@@ -34,7 +35,8 @@ namespace YahooScraperLogic.Commands
 
         public async void Execute(object parameter)
         {
-            string chosenPath = parent.FilePathLabelData;
+			counter = 0;
+			string chosenPath = parent.FilePathLabelData;
             if (string.IsNullOrEmpty(chosenPath.Trim()))
             {
                 return;
@@ -98,8 +100,9 @@ namespace YahooScraperLogic.Commands
 
         private async Task DownloadMultipleFilesAsync(IEnumerable<DataRow> rows)
         {
+			counter++;
             await Task.WhenAll(rows.Select(row => DownloadFileAsync(row)));
-            if (errors.Any())
+            if (errors.Any() && counter < 10)
             {
                 List<DataRow> items = new List<DataRow>(errors);
                 errors.Clear();
