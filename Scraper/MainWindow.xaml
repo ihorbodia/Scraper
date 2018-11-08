@@ -4,15 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:yahooSraper="clr-namespace:YahooScraperLogic.Views;assembly=YahooScraperLogic"
+        xmlns:filesChanger="clr-namespace:FilesNamesChanger.Views;assembly=FilesNamesChanger"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" 
-        Title="Yahoo scraper" 
+        Title="Files names changer" 
         ResizeMode="NoResize"
-        SizeToContent="WidthAndHeight"
-        MinHeight="250" 
-        MinWidth="450" Closing="Window_Closing"
+        Closing="Window_Closing"
+        Width="600"
+        Height="750"
         >
     <Grid>
-        <yahooSraper:YahooScraperView x:Name ="MainView" Width="auto" Height="auto"/>
+        <filesChanger:FilesChangerView x:Name ="MainView" Width="auto" Height="auto"/>
     </Grid>
 </Window>

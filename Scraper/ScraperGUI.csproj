@@ -115,6 +115,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FilesNamesChanger\FilesNamesChanger.csproj">
+      <Project>{2565b482-6460-44c7-b9b1-630d91ccdd0a}</Project>
+      <Name>FilesNamesChanger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SraperCommon\Sraper.Common.csproj">
       <Project>{D9F07A77-6B25-49CD-9404-72EFC5DBBB0F}</Project>
       <Name>Sraper.Common</Name>
