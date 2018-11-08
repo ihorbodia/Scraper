@@ -51,7 +51,7 @@ namespace FilesNamesChanger.ViewModels
             {
                 return _fileProcessingLabel;
             }
-            private set
+            set
             {
                 if (_fileProcessingLabel != value)
                 {
@@ -82,7 +82,7 @@ namespace FilesNamesChanger.ViewModels
             {
                 return _fileNameForSearching;
             }
-            private set
+            set
             {
                 if (_fileNameForSearching != value)
                 {
