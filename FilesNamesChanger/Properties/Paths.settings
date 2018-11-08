@@ -1,0 +1,51 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FilesNamesChanger" GeneratedClassName="Paths">
+  <Profiles />
+  <Settings>
+    <Setting Name="Folder_1" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Folder_2" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+        <Setting Name="Folder_3" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+        <Setting Name="Folder_4" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+        <Setting Name="Folder_5" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+        <Setting Name="Folder_6" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+        <Setting Name="Folder_7" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+        <Setting Name="Folder_8" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+        <Setting Name="Folder_9" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+        <Setting Name="Folder_10" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+        <Setting Name="Folder_11" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+        <Setting Name="Folder_12" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+        <Setting Name="Folder_13" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+        <Setting Name="Folder_14" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+        <Setting Name="Folder_15" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

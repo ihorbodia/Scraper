@@ -109,7 +109,7 @@
            
         </Grid>
         <DockPanel Grid.Row="1">
-            <Button Height="25" Command="{Binding ProcessFileCommand}" Content="Process file" Width="90" Margin="10,2,5,2" HorizontalAlignment="Right"></Button>
+            <Button Height="25" Command="{Binding ProcessFilesCommand}" Content="Process file" Width="90" Margin="10,2,5,2" HorizontalAlignment="Right"></Button>
         </DockPanel>
     </Grid>
 </UserControl>

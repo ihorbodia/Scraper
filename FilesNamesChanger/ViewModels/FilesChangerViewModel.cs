@@ -35,14 +35,15 @@ namespace FilesNamesChanger.ViewModels
 
         public FilesChangerViewModel()
         {
-            ProcessFileCommand = new ProcessFilesCommand(this);
+            ProcessFilesCommand = new ProcessFilesCommand(this);
             ChooseCountryFolderCommand = new ChooseFolderCommand(this);
             FileProcessingLabel = StringConsts.FileProcessingLabelConst;
             FileProcessingLabelData = string.Empty;
             FolderLabel = StringConsts.FileProcessingLabelData_ChooseFolder;
+            loadPaths();
         }
 
-        public ICommand ProcessFileCommand { get; private set; }
+        public ICommand ProcessFilesCommand { get; private set; }
         public ICommand ChooseCountryFolderCommand { get; private set; }
 
         public string FileProcessingLabel
@@ -134,6 +135,7 @@ namespace FilesNamesChanger.ViewModels
                 if (_folderPath_1 != value)
                 {
                     _folderPath_1 = value;
+                    Properties.Paths.Default.Folder_1 = value;
                     RaisePropertyChanged(nameof(FolderPath_1));
                 }
             }
@@ -149,6 +151,7 @@ namespace FilesNamesChanger.ViewModels
                 if (_folderPath_2 != value)
                 {
                     _folderPath_2 = value;
+                    Properties.Paths.Default.Folder_2 = value;
                     RaisePropertyChanged(nameof(FolderPath_2));
                 }
             }
@@ -164,6 +167,7 @@ namespace FilesNamesChanger.ViewModels
                 if (_folderPath_3 != value)
                 {
                     _folderPath_3 = value;
+                    Properties.Paths.Default.Folder_3 = value;
                     RaisePropertyChanged(nameof(FolderPath_3));
                 }
             }
@@ -179,6 +183,7 @@ namespace FilesNamesChanger.ViewModels
                 if (_folderPath_4 != value)
                 {
                     _folderPath_4 = value;
+                    Properties.Paths.Default.Folder_4 = value;
                     RaisePropertyChanged(nameof(FolderPath_4));
                 }
             }
@@ -194,6 +199,7 @@ namespace FilesNamesChanger.ViewModels
                 if (_folderPath_5 != value)
                 {
                     _folderPath_5 = value;
+                    Properties.Paths.Default.Folder_5 = value;
                     RaisePropertyChanged(nameof(FolderPath_5));
                 }
             }
@@ -209,6 +215,7 @@ namespace FilesNamesChanger.ViewModels
                 if (_folderPath_6 != value)
                 {
                     _folderPath_6 = value;
+                    Properties.Paths.Default.Folder_6 = value;
                     RaisePropertyChanged(nameof(FolderPath_6));
                 }
             }
@@ -224,6 +231,7 @@ namespace FilesNamesChanger.ViewModels
                 if (_folderPath_7 != value)
                 {
                     _folderPath_7 = value;
+                    Properties.Paths.Default.Folder_7 = value;
                     RaisePropertyChanged(nameof(FolderPath_7));
                 }
             }
@@ -239,6 +247,7 @@ namespace FilesNamesChanger.ViewModels
                 if (_folderPath_8 != value)
                 {
                     _folderPath_8 = value;
+                    Properties.Paths.Default.Folder_8 = value;
                     RaisePropertyChanged(nameof(FolderPath_8));
                 }
             }
@@ -254,6 +263,7 @@ namespace FilesNamesChanger.ViewModels
                 if (_folderPath_9 != value)
                 {
                     _folderPath_9 = value;
+                    Properties.Paths.Default.Folder_9 = value;
                     RaisePropertyChanged(nameof(FolderPath_9));
                 }
             }
@@ -269,6 +279,7 @@ namespace FilesNamesChanger.ViewModels
                 if (_folderPath_10 != value)
                 {
                     _folderPath_10 = value;
+                    Properties.Paths.Default.Folder_10 = value;
                     RaisePropertyChanged(nameof(FolderPath_10));
                 }
             }
@@ -284,6 +295,7 @@ namespace FilesNamesChanger.ViewModels
                 if (_folderPath_11 != value)
                 {
                     _folderPath_11 = value;
+                    Properties.Paths.Default.Folder_11 = value;
                     RaisePropertyChanged(nameof(FolderPath_11));
                 }
             }
@@ -299,6 +311,7 @@ namespace FilesNamesChanger.ViewModels
                 if (_folderPath_12 != value)
                 {
                     _folderPath_12 = value;
+                    Properties.Paths.Default.Folder_12 = value;
                     RaisePropertyChanged(nameof(FolderPath_12));
                 }
             }
@@ -314,6 +327,7 @@ namespace FilesNamesChanger.ViewModels
                 if (_folderPath_13 != value)
                 {
                     _folderPath_13 = value;
+                    Properties.Paths.Default.Folder_13 = value;
                     RaisePropertyChanged(nameof(FolderPath_13));
                 }
             }
@@ -329,6 +343,7 @@ namespace FilesNamesChanger.ViewModels
                 if (_folderPath_14 != value)
                 {
                     _folderPath_14 = value;
+                    Properties.Paths.Default.Folder_14 = value;
                     RaisePropertyChanged(nameof(FolderPath_14));
                 }
             }
@@ -344,6 +359,7 @@ namespace FilesNamesChanger.ViewModels
                 if (_folderPath_15 != value)
                 {
                     _folderPath_15 = value;
+                    Properties.Paths.Default.Folder_15 = value;
                     RaisePropertyChanged(nameof(FolderPath_15));
                 }
             }
@@ -352,6 +368,71 @@ namespace FilesNamesChanger.ViewModels
         private void RaisePropertyChanged(string property)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+            Properties.Paths.Default.Save();
+        }
+
+        private void loadPaths()
+        {
+            if (!string.IsNullOrEmpty(Properties.Paths.Default.Folder_1))
+            {
+                FolderPath_1 = Properties.Paths.Default.Folder_1;
+            }
+            if (!string.IsNullOrEmpty(Properties.Paths.Default.Folder_2))
+            {
+                FolderPath_2 = Properties.Paths.Default.Folder_2;
+            }
+            if (!string.IsNullOrEmpty(Properties.Paths.Default.Folder_3))
+            {
+                FolderPath_3 = Properties.Paths.Default.Folder_3;
+            }
+            if (!string.IsNullOrEmpty(Properties.Paths.Default.Folder_4))
+            {
+                FolderPath_4 = Properties.Paths.Default.Folder_4;
+            }
+            if (!string.IsNullOrEmpty(Properties.Paths.Default.Folder_5))
+            {
+                FolderPath_5 = Properties.Paths.Default.Folder_5;
+            }
+            if (!string.IsNullOrEmpty(Properties.Paths.Default.Folder_6))
+            {
+                FolderPath_6 = Properties.Paths.Default.Folder_6;
+            }
+            if (!string.IsNullOrEmpty(Properties.Paths.Default.Folder_7))
+            {
+                FolderPath_7 = Properties.Paths.Default.Folder_7;
+            }
+            if (!string.IsNullOrEmpty(Properties.Paths.Default.Folder_8))
+            {
+                FolderPath_8 = Properties.Paths.Default.Folder_8;
+            }
+            if (!string.IsNullOrEmpty(Properties.Paths.Default.Folder_9))
+            {
+                FolderPath_9 = Properties.Paths.Default.Folder_9;
+            }
+            if (!string.IsNullOrEmpty(Properties.Paths.Default.Folder_10))
+            {
+                FolderPath_10 = Properties.Paths.Default.Folder_10;
+            }
+            if (!string.IsNullOrEmpty(Properties.Paths.Default.Folder_11))
+            {
+                FolderPath_11 = Properties.Paths.Default.Folder_11;
+            }
+            if (!string.IsNullOrEmpty(Properties.Paths.Default.Folder_12))
+            {
+                FolderPath_12 = Properties.Paths.Default.Folder_12;
+            }
+            if (!string.IsNullOrEmpty(Properties.Paths.Default.Folder_13))
+            {
+                FolderPath_13 = Properties.Paths.Default.Folder_13;
+            }
+            if (!string.IsNullOrEmpty(Properties.Paths.Default.Folder_14))
+            {
+                FolderPath_14 = Properties.Paths.Default.Folder_14;
+            }
+            if (!string.IsNullOrEmpty(Properties.Paths.Default.Folder_15))
+            {
+                FolderPath_15 = Properties.Paths.Default.Folder_15;
+            }
         }
     }
 }

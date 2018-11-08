@@ -8,7 +8,7 @@
     <ProjectGuid>{F2F34AD3-F8E3-47FF-9687-5EDDDCD53AFE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Scraper</RootNamespace>
-    <AssemblyName>Yahoo scraper</AssemblyName>
+    <AssemblyName>Files names changer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -37,7 +37,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>images_46E_icon.ico</ApplicationIcon>
+    <ApplicationIcon>download_2BV_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Costura, Version=3.1.5.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
@@ -133,6 +133,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images_46E_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="download_2BV_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.3.2.9\build\Fody.targets" Condition="Exists('..\packages\Fody.3.2.9\build\Fody.targets')" />
