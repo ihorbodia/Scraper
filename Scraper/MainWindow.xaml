@@ -11,7 +11,7 @@
         ResizeMode="NoResize"
         Closing="Window_Closing"
         Width="600"
-        Height="750"
+        Height="850"
         >
     <Grid>
         <filesChanger:FilesChangerView x:Name ="MainView" Width="auto" Height="auto"/>

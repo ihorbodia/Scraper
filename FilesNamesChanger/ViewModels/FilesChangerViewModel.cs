@@ -8,6 +8,9 @@ namespace FilesNamesChanger.ViewModels
     class FilesChangerViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private string _folderLabel;
+
         private string _fileProcessingLabel;
         private string _fileProcessingLabelData;
 
@@ -36,6 +39,7 @@ namespace FilesNamesChanger.ViewModels
             ChooseCountryFolderCommand = new ChooseFolderCommand(this);
             FileProcessingLabel = StringConsts.FileProcessingLabelConst;
             FileProcessingLabelData = string.Empty;
+            FolderLabel = StringConsts.FileProcessingLabelData_ChooseFolder;
         }
 
         public ICommand ProcessFileCommand { get; private set; }
@@ -99,6 +103,22 @@ namespace FilesNamesChanger.ViewModels
                 {
                     _fileNameForChanging = value;
                     RaisePropertyChanged(nameof(FileNameForChanging));
+                }
+            }
+        }
+
+        public string FolderLabel
+        {
+            get
+            {
+                return _folderLabel;
+            }
+            set
+            {
+                if (_folderLabel != value)
+                {
+                    _folderLabel = value;
+                    RaisePropertyChanged(nameof(FolderLabel));
                 }
             }
         }
