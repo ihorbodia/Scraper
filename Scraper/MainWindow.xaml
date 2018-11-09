@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:yahooSraper="clr-namespace:YahooScraperLogic.Views;assembly=YahooScraperLogic"
         xmlns:filesChanger="clr-namespace:FilesNamesChanger.Views;assembly=FilesNamesChanger"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" 
@@ -11,7 +10,7 @@
         ResizeMode="NoResize"
         Closing="Window_Closing"
         Width="600"
-        Height="900"
+        Height="950"
         >
     <Grid>
         <filesChanger:FilesChangerView x:Name ="MainView" Width="auto" Height="auto"/>

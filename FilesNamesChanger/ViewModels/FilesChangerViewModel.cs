@@ -16,6 +16,7 @@ namespace FilesNamesChanger.ViewModels
 
         private string _fileNameForSearching;
         private string _fileNameForChanging;
+        private string _countryNameFolder;
 
         private string _folderPath_1;
         private string _folderPath_2;
@@ -104,6 +105,22 @@ namespace FilesNamesChanger.ViewModels
                 {
                     _fileNameForChanging = value;
                     RaisePropertyChanged(nameof(FileNameForChanging));
+                }
+            }
+        }
+        public string CountryNameFolder
+        {
+            get
+            {
+                return _countryNameFolder;
+            }
+            set
+            {
+                if (_countryNameFolder != value)
+                {
+                    _countryNameFolder = value;
+                    Properties.Paths.Default.Country_name = value;
+                    RaisePropertyChanged(nameof(CountryNameFolder));
                 }
             }
         }
@@ -432,6 +449,10 @@ namespace FilesNamesChanger.ViewModels
             if (!string.IsNullOrEmpty(Properties.Paths.Default.Folder_15))
             {
                 FolderPath_15 = Properties.Paths.Default.Folder_15;
+            }
+            if (!string.IsNullOrEmpty(Properties.Paths.Default.Country_name))
+            {
+                CountryNameFolder = Properties.Paths.Default.Country_name;
             }
         }
     }

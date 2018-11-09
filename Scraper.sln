@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScraperGUI", "Scraper\ScraperGUI.csproj", "{F2F34AD3-F8E3-47FF-9687-5EDDDCD53AFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YahooScraperLogic", "YahooScraperLogic\YahooScraperLogic.csproj", "{B03B4CC0-4140-417C-A575-D512F49DC73F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sraper.Common", "SraperCommon\Sraper.Common.csproj", "{D9F07A77-6B25-49CD-9404-72EFC5DBBB0F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilesNamesChanger", "FilesNamesChanger\FilesNamesChanger.csproj", "{2565B482-6460-44C7-B9B1-630D91CCDD0A}"
@@ -21,10 +19,6 @@ Global
 		{F2F34AD3-F8E3-47FF-9687-5EDDDCD53AFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2F34AD3-F8E3-47FF-9687-5EDDDCD53AFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2F34AD3-F8E3-47FF-9687-5EDDDCD53AFE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B03B4CC0-4140-417C-A575-D512F49DC73F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B03B4CC0-4140-417C-A575-D512F49DC73F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B03B4CC0-4140-417C-A575-D512F49DC73F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B03B4CC0-4140-417C-A575-D512F49DC73F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D9F07A77-6B25-49CD-9404-72EFC5DBBB0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D9F07A77-6B25-49CD-9404-72EFC5DBBB0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9F07A77-6B25-49CD-9404-72EFC5DBBB0F}.Release|Any CPU.ActiveCfg = Release|Any CPU

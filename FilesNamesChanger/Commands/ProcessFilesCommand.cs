@@ -64,6 +64,10 @@ namespace FilesNamesChanger.Commands
             DirectoryInfo countryDirs = new DirectoryInfo(path);
             foreach (var countryDir in countryDirs.EnumerateDirectories())
             {
+                if (!countryDir.Equals(parent.CountryNameFolder))
+                {
+                    continue;
+                }
                 var files = countryDir.EnumerateFiles();
                 foreach (var file in files)
                 {

@@ -123,10 +123,6 @@
       <Project>{D9F07A77-6B25-49CD-9404-72EFC5DBBB0F}</Project>
       <Name>Sraper.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\YahooScraperLogic\YahooScraperLogic.csproj">
-      <Project>{b03b4cc0-4140-417c-a575-d512f49dc73f}</Project>
-      <Name>YahooScraperLogic</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images_wu5_icon.ico" />

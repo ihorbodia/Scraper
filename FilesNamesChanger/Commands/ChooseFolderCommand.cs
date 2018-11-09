@@ -48,6 +48,9 @@ namespace FilesNamesChanger.Commands
                 case "8":
                     parent.FolderPath_8 = chosenPath;
                     break;
+                case "9":
+                    parent.FolderPath_9 = chosenPath;
+                    break;
                 case "10":
                     parent.FolderPath_10 = chosenPath;
                     break;
@@ -68,22 +71,6 @@ namespace FilesNamesChanger.Commands
                     break;
                 default:
                     break;
-            }
-            if (!string.IsNullOrEmpty(chosenPath.Trim()))
-            {
-                //parent.FolderForStoringFilesLabelData = chosenPath;
-                //if (!string.IsNullOrEmpty(parent.FolderForStoringFilesLabelData) && !string.IsNullOrEmpty(parent.FilePathLabelData))
-                //{
-                //    parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_CanProcess;
-                //}
-                //if (string.IsNullOrEmpty(parent.FolderForStoringFilesLabelData))
-                //{
-                //    parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ChooseFolder;
-                //}
-                //if (string.IsNullOrEmpty(parent.FilePathLabelData))
-                //{
-                //    parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ChooseFile;
-                //}
             }
         }
     }

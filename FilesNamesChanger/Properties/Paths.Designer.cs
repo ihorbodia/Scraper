@@ -202,5 +202,17 @@ namespace FilesNamesChanger.Properties {
                 this["Folder_15"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Country_name {
+            get {
+                return ((string)(this["Country_name"]));
+            }
+            set {
+                this["Country_name"] = value;
+            }
+        }
     }
 }
