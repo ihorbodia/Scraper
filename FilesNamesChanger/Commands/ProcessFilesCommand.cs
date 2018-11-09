@@ -17,20 +17,6 @@ namespace FilesNamesChanger.Commands
         public bool CanExecute(object parameter)
         {
             return
-                !string.IsNullOrEmpty(parent.FolderPath_1) &&
-                !string.IsNullOrEmpty(parent.FolderPath_2) &&
-                !string.IsNullOrEmpty(parent.FolderPath_3) &&
-                !string.IsNullOrEmpty(parent.FolderPath_4) &&
-                !string.IsNullOrEmpty(parent.FolderPath_5) &&
-                !string.IsNullOrEmpty(parent.FolderPath_6) &&
-                !string.IsNullOrEmpty(parent.FolderPath_7) &&
-                !string.IsNullOrEmpty(parent.FolderPath_8) &&
-                !string.IsNullOrEmpty(parent.FolderPath_10) &&
-                !string.IsNullOrEmpty(parent.FolderPath_11) &&
-                !string.IsNullOrEmpty(parent.FolderPath_12) &&
-                !string.IsNullOrEmpty(parent.FolderPath_13) &&
-                !string.IsNullOrEmpty(parent.FolderPath_14) &&
-                !string.IsNullOrEmpty(parent.FolderPath_15) &&
                 !string.IsNullOrEmpty(parent.FileNameForSearching) &&
                 !string.IsNullOrEmpty(parent.FileNameForChanging);
 
@@ -62,27 +48,37 @@ namespace FilesNamesChanger.Commands
                 return;
             }
             DirectoryInfo countryDirs = new DirectoryInfo(path);
-            foreach (var countryDir in countryDirs.EnumerateDirectories())
+            try
             {
-                if (!countryDir.Equals(parent.CountryNameFolder))
+                foreach (var chosenCountryDir in countryDirs.EnumerateDirectories())
                 {
-                    continue;
-                }
-                var files = countryDir.EnumerateFiles();
-                foreach (var file in files)
-                {
-                    string extension = file.Extension;
-                    string name = Path.GetFileNameWithoutExtension(file.Name);
-
-                    string input = file.FullName;
-                    int index = input.LastIndexOf("\\");
-                    if (index > 0)
-                        input = input.Substring(0, index);
-                    if (name.Equals(parent.FileNameForSearching))
+                    foreach (var countryDir in chosenCountryDir.EnumerateDirectories())
                     {
-                        File.Move(file.FullName, input+"\\"+parent.FileNameForChanging + extension);
+                        if (!countryDir.Name.Equals(parent.CountryNameFolder))
+                        {
+                            continue;
+                        }
+                        var files = countryDir.EnumerateFiles();
+                        foreach (var file in files)
+                        {
+                            string extension = file.Extension;
+                            string name = Path.GetFileNameWithoutExtension(file.Name);
+
+                            string input = file.FullName;
+                            int index = input.LastIndexOf("\\");
+                            if (index > 0)
+                                input = input.Substring(0, index);
+                            if (name.Equals(parent.FileNameForSearching))
+                            {
+                                File.Move(file.FullName, input + "\\" + parent.FileNameForChanging + extension);
+                            }
+                        }
                     }
                 }
+            }
+            catch (DirectoryNotFoundException)
+            {
+                Console.WriteLine("Directory not found");
             }
         }
     }

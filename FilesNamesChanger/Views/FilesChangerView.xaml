@@ -16,77 +16,77 @@
         <StackPanel Orientation="Vertical">
             <Canvas Margin="10,10,5,0" >
                 <TextBlock Canvas.Top="0" Text="Folder 1:" Width="auto" Height="25"></TextBlock>
-                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_1, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="300" Width="auto"></TextBlock>
+                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_1, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="500" Width="auto"></TextBlock>
                 <Button Canvas.Top="15" Canvas.Right="10" Height="25" Command="{Binding ChooseCountryFolderCommand}" CommandParameter="1" Content="Choose folder" Width="90" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
             </Canvas>
             <Canvas Margin="10,50,5,0">
                 <TextBlock Canvas.Top="0" Text="Folder 2:" Width="auto" Height="25"></TextBlock>
-                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_2, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="300" Width="auto"></TextBlock>
+                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_2, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="500" Width="auto"></TextBlock>
                 <Button Canvas.Top="15" Canvas.Right="10" Height="25" Command="{Binding ChooseCountryFolderCommand}" CommandParameter="2" Content="Choose folder" Width="90" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
             </Canvas>
             <Canvas Margin="10,50,5,0">
                 <TextBlock Canvas.Top="0" Text="Folder 3:" Width="auto" Height="25"></TextBlock>
-                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_3, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="300" Width="auto"></TextBlock>
+                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_3, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="500" Width="auto"></TextBlock>
                 <Button Canvas.Top="15" Canvas.Right="10" Height="25" Command="{Binding ChooseCountryFolderCommand}" CommandParameter="3" Content="Choose folder" Width="90" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
             </Canvas>
             <Canvas Margin="10,50,5,0">
                 <TextBlock Canvas.Top="0" Text="Folder 4:" Width="auto" Height="25"></TextBlock>
-                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_4, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="300" Width="auto"></TextBlock>
+                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_4, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="500" Width="auto"></TextBlock>
                 <Button Canvas.Top="15" Canvas.Right="10" Height="25" Command="{Binding ChooseCountryFolderCommand}" CommandParameter="4" Content="Choose folder" Width="90" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
             </Canvas>
             <Canvas Margin="10,50,5,0">
                 <TextBlock Canvas.Top="0" Text="Folder 5:" Width="auto" Height="25"></TextBlock>
-                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_5, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="300" Width="auto"></TextBlock>
+                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_5, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="500" Width="auto"></TextBlock>
                 <Button Canvas.Top="15" Canvas.Right="10" Height="25" Command="{Binding ChooseCountryFolderCommand}" CommandParameter="5" Content="Choose folder" Width="90" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
             </Canvas>
             <Canvas Margin="10,50,5,0">
                 <TextBlock Canvas.Top="0" Text="Folder 6:" Width="auto" Height="25"></TextBlock>
-                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_6, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="300" Width="auto"></TextBlock>
+                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_6, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="500" Width="auto"></TextBlock>
                 <Button Canvas.Top="15" Canvas.Right="10" Height="25" Command="{Binding ChooseCountryFolderCommand}" CommandParameter="6" Content="Choose folder" Width="90" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
             </Canvas>
             <Canvas Margin="10,50,5,0">
                 <TextBlock Canvas.Top="0" Text="Folder 7:" Width="auto" Height="25"></TextBlock>
-                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_7, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="300" Width="auto"></TextBlock>
+                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_7, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="500" Width="auto"></TextBlock>
                 <Button Canvas.Top="15" Canvas.Right="10" Height="25" Command="{Binding ChooseCountryFolderCommand}" CommandParameter="7" Content="Choose folder" Width="90" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
             </Canvas>
             <Canvas Margin="10,50,5,0">
                 <TextBlock Canvas.Top="0" Text="Folder 8:" Width="auto" Height="25"></TextBlock>
-                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_8, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="300" Width="auto"></TextBlock>
+                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_8, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="500" Width="auto"></TextBlock>
                 <Button Canvas.Top="15" Canvas.Right="10" Height="25" Command="{Binding ChooseCountryFolderCommand}" CommandParameter="8" Content="Choose folder" Width="90" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
             </Canvas>
             <Canvas Margin="10,50,5,0">
                 <TextBlock Canvas.Top="0" Text="Folder 9:" Width="auto" Height="25"></TextBlock>
-                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_9, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="300" Width="auto"></TextBlock>
+                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_9, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="500" Width="auto"></TextBlock>
                 <Button Canvas.Top="15" Canvas.Right="10" Height="25" Command="{Binding ChooseCountryFolderCommand}" CommandParameter="9" Content="Choose folder" Width="90" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
             </Canvas>
             <Canvas Margin="10,50,5,0">
                 <TextBlock Canvas.Top="0" Text="Folder 10:" Width="auto" Height="25"></TextBlock>
-                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_10, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="300" Width="auto"></TextBlock>
+                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_10, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="500" Width="auto"></TextBlock>
                 <Button Canvas.Top="15" Canvas.Right="10" Height="25" Command="{Binding ChooseCountryFolderCommand}" CommandParameter="10" Content="Choose folder" Width="90" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
             </Canvas>
             <Canvas Margin="10,50,5,0">
                 <TextBlock Canvas.Top="0" Text="Folder 11:" Width="auto" Height="25"></TextBlock>
-                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_11, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="300" Width="auto"></TextBlock>
+                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_11, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="500" Width="auto"></TextBlock>
                 <Button Canvas.Top="15" Canvas.Right="10" Height="25" Command="{Binding ChooseCountryFolderCommand}" CommandParameter="11" Content="Choose folder" Width="90" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
             </Canvas>
             <Canvas Margin="10,50,5,0">
                 <TextBlock Canvas.Top="0" Text="Folder 12:" Width="auto" Height="25"></TextBlock>
-                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_12, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="300" Width="auto"></TextBlock>
+                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_12, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="500" Width="auto"></TextBlock>
                 <Button Canvas.Top="15" Canvas.Right="10" Height="25" Command="{Binding ChooseCountryFolderCommand}" CommandParameter="12" Content="Choose folder" Width="90" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
             </Canvas>
             <Canvas Margin="10,50,5,0">
                 <TextBlock Canvas.Top="0" Text="Folder 13:" Width="auto" Height="25"></TextBlock>
-                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_13, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="300" Width="auto"></TextBlock>
+                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_13, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="500" Width="auto"></TextBlock>
                 <Button Canvas.Top="15" Canvas.Right="10" Height="25" Command="{Binding ChooseCountryFolderCommand}" CommandParameter="13" Content="Choose folder" Width="90" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
             </Canvas>
             <Canvas Margin="10,50,5,0">
                 <TextBlock Canvas.Top="0" Text="Folder 14:" Width="auto" Height="25"></TextBlock>
-                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_14, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="300" Width="auto"></TextBlock>
+                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_14, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="500" Width="auto"></TextBlock>
                 <Button Canvas.Top="15" Canvas.Right="10" Height="25" Command="{Binding ChooseCountryFolderCommand}" CommandParameter="14" Content="Choose folder" Width="90" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
             </Canvas>
             <Canvas Margin="10,50,5,0">
                 <TextBlock Canvas.Top="0" Text="Folder 15:" Width="auto" Height="25"></TextBlock>
-                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_15, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="300" Width="auto"></TextBlock>
+                <TextBlock Canvas.Top="15" Text="{Binding Path=FolderPath_15, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="500" Width="auto"></TextBlock>
                 <Button Canvas.Top="15" Canvas.Right="10" Height="25" Command="{Binding ChooseCountryFolderCommand}" CommandParameter="15" Content="Choose folder" Width="90" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
             </Canvas>
             <Grid Margin="10,50,5,0">
