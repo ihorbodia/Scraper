@@ -50,28 +50,25 @@ namespace FilesNamesChanger.Commands
             DirectoryInfo countryDirs = new DirectoryInfo(path);
             try
             {
-                foreach (var chosenCountryDir in countryDirs.EnumerateDirectories())
+                foreach (var countryDir in countryDirs.EnumerateDirectories())
                 {
-                    foreach (var countryDir in chosenCountryDir.EnumerateDirectories())
+                    if (!countryDir.Name.Equals(parent.CountryNameFolder))
                     {
-                        if (!countryDir.Name.Equals(parent.CountryNameFolder))
-                        {
-                            continue;
-                        }
-                        var files = countryDir.EnumerateFiles();
-                        foreach (var file in files)
-                        {
-                            string extension = file.Extension;
-                            string name = Path.GetFileNameWithoutExtension(file.Name);
+                        continue;
+                    }
+                    var files = countryDir.EnumerateFiles();
+                    foreach (var file in files)
+                    {
+                        string extension = file.Extension;
+                        string name = Path.GetFileNameWithoutExtension(file.Name);
 
-                            string input = file.FullName;
-                            int index = input.LastIndexOf("\\");
-                            if (index > 0)
-                                input = input.Substring(0, index);
-                            if (name.Equals(parent.FileNameForSearching))
-                            {
-                                File.Move(file.FullName, input + "\\" + parent.FileNameForChanging + extension);
-                            }
+                        string input = file.FullName;
+                        int index = input.LastIndexOf("\\");
+                        if (index > 0)
+                            input = input.Substring(0, index);
+                        if (name.Equals(parent.FileNameForSearching))
+                        {
+                            File.Move(file.FullName, input + "\\" + parent.FileNameForChanging + extension);
                         }
                     }
                 }
