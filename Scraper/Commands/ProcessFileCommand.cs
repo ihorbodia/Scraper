@@ -5,6 +5,11 @@ using System.Windows.Input;
 using System.Windows.Threading;
 using Scraper.ViewModel;
 using Sraper.Common;
+using System.IO;
+using OfficeOpenXml;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 
 namespace ScraperGUI.Commands
 {
@@ -24,36 +29,63 @@ namespace ScraperGUI.Commands
                     !parent.FileProcessingLabelData.Equals(StringConsts.FileProcessingLabelData_Processing);
         }
 
-        public void Execute(object parameter)
-        {
-            string chosenPath = parent.FilePathLabelData;
-            string chosenFodlerPath = parent.CountryFolderPathLabelData;
-            
-            if (string.IsNullOrEmpty(chosenPath.Trim()))
-            {
-                return;
-            }
-            parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_Processing;
-            try
-            {
-                Task.Factory.StartNew(() =>
-                {
-                    //ShareholderAnalyzerLogic ms = new ShareholderAnalyzerLogic();
-                    //ms.ProcessFile(chosenPath, chosenFodlerPath);
-                })
-                .ContinueWith((action) =>
-                {
-                    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() => {
-                        parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_Finish;
-                        Console.WriteLine(StringConsts.FileProcessingLabelData_Finish);
-                    }));
-                });
-            }
-            catch (Exception)
-            {
-                parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ErrorMessage;
-            }
-        }
-        
-    }
+		public async void Execute(object parameter)
+		{
+			string chosenPath = parent.CountryFolderPathLabelData;
+			if (string.IsNullOrEmpty(chosenPath.Trim()))
+			{
+				return;
+			}
+			parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_Processing;
+
+			var dir = new DirectoryInfo(chosenPath); //Unlisted list //Template 3
+			var filesList = dir.GetFiles("*.xlsx").ToList();
+			FileInfo template = filesList.FirstOrDefault(x => x.Name.ToLower().Contains("template"));
+			if (template == null)
+			{
+				return;
+			}
+			filesList = filesList.Where(item => !item.Name.ToLower().Contains("template")).ToList();
+			filesList = filesList.Where(item => !item.Name.ToLower().Contains("unlisted")).ToList();
+
+			var templateData = FilesHelper.GetDataTableFromExcelHeaders(template.FullName, false);
+			DataRow row = templateData.Rows[0];
+
+			foreach (var file in filesList)
+			{
+				var data = FilesHelper.GetDataTableFromExcel(file.FullName, row);
+				if (data == null)
+				{
+					return;
+				}
+				using (ExcelPackage pck = new ExcelPackage(new FileInfo(Path.Combine(parent.OutputFolderLabelData, file.Name))))
+				{
+					ExcelWorksheet ws = pck.Workbook.Worksheets.FirstOrDefault(x => x.Name.Equals("Sheet1"));
+					if (ws == null)
+					{
+						ws = pck.Workbook.Worksheets.Add("Sheet1");
+					}
+					ws.Cells["A1"].LoadFromDataTable(data, true);
+					pck.Save();
+				}
+			}
+			parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_Finish;
+			Console.WriteLine(StringConsts.FileProcessingLabelData_Finish);
+
+
+			////var table = FilesHelper.GetDataTableFromExcel(parent.FilePathLabelData);
+			//if (table != null)
+			//{
+			//	try
+			//	{
+			//		//await DownloadMultipleFilesAsync(table.AsEnumerable());
+			//	}
+			//	catch (Exception ex)
+			//	{
+			//		parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ErrorMessage;
+			//	}
+			//}
+
+		}
+	}
 }

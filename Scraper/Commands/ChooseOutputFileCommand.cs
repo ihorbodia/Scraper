@@ -5,11 +5,11 @@ using System.Windows.Input;
 
 namespace ScraperGUI.Commands
 {
-    internal class ChooseFileCommand : ICommand
+    internal class ChooseOutputFileCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
         readonly MainViewModel parent;
-        public ChooseFileCommand(MainViewModel parent)
+        public ChooseOutputFileCommand(MainViewModel parent)
         {
             this.parent = parent;
             parent.PropertyChanged += delegate { CanExecuteChanged?.Invoke(this, EventArgs.Empty); };
@@ -21,11 +21,11 @@ namespace ScraperGUI.Commands
 
         public void Execute(object parameter)
         {
-            string chosenPath = FilesHelper.SelectFile();
-            if (!string.IsNullOrEmpty(chosenPath.Trim()))
+			string chosenPath = FilesHelper.SelectFolder();
+			if (!string.IsNullOrEmpty(chosenPath.Trim()))
             {
-                parent.FilePathLabelData = chosenPath;
-                if (!string.IsNullOrEmpty(parent.CountryFolderPathLabelData) && !string.IsNullOrEmpty(parent.FilePathLabelData))
+                parent.OutputFolderLabelData = chosenPath;
+                if (!string.IsNullOrEmpty(parent.CountryFolderPathLabelData) && !string.IsNullOrEmpty(parent.OutputFolderLabelData))
                 {
                     parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_CanProcess;
                 }
@@ -33,7 +33,7 @@ namespace ScraperGUI.Commands
                 {
                     parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ChooseFolder;
                 }
-                if (string.IsNullOrEmpty(parent.FilePathLabelData))
+                if (string.IsNullOrEmpty(parent.OutputFolderLabelData))
                 {
                     parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ChooseFile;
                 }

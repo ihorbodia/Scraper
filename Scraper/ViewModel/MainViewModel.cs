@@ -8,8 +8,8 @@ namespace Scraper.ViewModel
     public class MainViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private string _filePathLabel;
-        private string _filePathLabelData;
+        private string _outputFolderLabel;
+        private string _outputFolderLabelData;
 
         private string _countryFolderPathLabel;
         private string _countryFolderPathLabelData;
@@ -21,8 +21,8 @@ namespace Scraper.ViewModel
         {
             ProcessFileCommand = new ProcessFileCommand(this);
             ChooseCountryFolderCommand = new ChooseCountryFolderCommand(this);
-            ChooseFileCommand = new ChooseFileCommand(this);
-            FilePathLabel = StringConsts.FilePathLabelConst;
+			ChooseOutputFileCommand = new ChooseOutputFileCommand(this);
+			OutputFolderLabel = StringConsts.FileProcessingLabelData_ChooseFolder;
             FileProcessingLabel = StringConsts.FileProcessingLabelConst;
             CountryFolderPathLabel = StringConsts.CountryFolderPathLabelConst;
             FileProcessingLabelData = string.Empty;
@@ -30,39 +30,39 @@ namespace Scraper.ViewModel
 
         public ICommand ProcessFileCommand { get; private set; }
         public ICommand ChooseCountryFolderCommand { get; private set; }
-        public ICommand ChooseFileCommand { get; private set; }
+        public ICommand ChooseOutputFileCommand { get; private set; }
 
-        public string FilePathLabel
-        {
-            get
-            {
-                return _filePathLabel;
-            }
-            private set
-            {
-                if (_filePathLabel != value)
-                {
-                    _filePathLabel = value;
-                    RaisePropertyChanged(nameof(FilePathLabel));
-                }
-            }
-        }
-        public string FilePathLabelData
-        {
-            get
-            {
-                return _filePathLabelData;
-            }
-            set
-            {
-                if (_filePathLabelData != value)
-                {
-                    _filePathLabelData = value;
-                    RaisePropertyChanged(nameof(FilePathLabelData));
-                }
-            }
-        }
-        public string FileProcessingLabel
+		public string OutputFolderLabel
+		{
+			get
+			{
+				return _outputFolderLabel;
+			}
+			private set
+			{
+				if (_outputFolderLabel != value)
+				{
+					_outputFolderLabel = value;
+					RaisePropertyChanged(nameof(OutputFolderLabel));
+				}
+			}
+		}
+		public string OutputFolderLabelData
+		{
+			get
+			{
+				return _outputFolderLabelData;
+			}
+			set
+			{
+				if (_outputFolderLabelData != value)
+				{
+					_outputFolderLabelData = value;
+					RaisePropertyChanged(nameof(OutputFolderLabelData));
+				}
+			}
+		}
+		public string FileProcessingLabel
         {
             get
             {
@@ -100,9 +100,9 @@ namespace Scraper.ViewModel
             }
             private set
             {
-                if (_filePathLabel != value)
+                if (_countryFolderPathLabel != value)
                 {
-                    _countryFolderPathLabel = value;
+					_countryFolderPathLabel = value;
                     RaisePropertyChanged(nameof(CountryFolderPathLabel));
                 }
             }
@@ -117,7 +117,7 @@ namespace Scraper.ViewModel
             {
                 if (_countryFolderPathLabelData != value)
                 {
-                    _countryFolderPathLabelData = value;
+					_countryFolderPathLabelData = value;
                     RaisePropertyChanged(nameof(CountryFolderPathLabelData));
                 }
             }

@@ -25,7 +25,7 @@ namespace ScraperGUI.Commands
             if (!string.IsNullOrEmpty(chosenPath.Trim()))
             {
                 parent.CountryFolderPathLabelData = chosenPath;
-                if (!string.IsNullOrEmpty(parent.CountryFolderPathLabelData) && !string.IsNullOrEmpty(parent.FilePathLabelData))
+                if (!string.IsNullOrEmpty(parent.CountryFolderPathLabelData) && !string.IsNullOrEmpty(parent.OutputFolderLabelData))
                 {
                     parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_CanProcess;
                 }
@@ -33,9 +33,9 @@ namespace ScraperGUI.Commands
                 {
                     parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ChooseFolder;
                 }
-                if (string.IsNullOrEmpty(parent.FilePathLabelData))
+                if (string.IsNullOrEmpty(parent.OutputFolderLabelData))
                 {
-                    parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ChooseFile;
+                    parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ChooseFolder;
                 }
             }
         }

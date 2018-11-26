@@ -3,16 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:yahooSraper="clr-namespace:YahooScraperLogic.Views;assembly=YahooScraperLogic"
+        xmlns:local="clr-namespace:Scraper.Views"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" 
-        Title="Yahoo Japan scraper" 
+        Title="Excel connector" 
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"
         MinHeight="250" 
         MinWidth="450" Closing="Window_Closing"
         >
     <Grid>
-        <yahooSraper:YahooScraperView x:Name ="MainView" Width="auto" Height="auto"/>
+        <local:MainView x:Name ="MainView" Width="auto" Height="auto"/>
     </Grid>
 </Window>
