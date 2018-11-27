@@ -67,6 +67,29 @@ namespace ScraperGUI.Commands
                             ws = pck.Workbook.Worksheets.Add("Sheet1");
                         }
                         ws.Cells["A1"].LoadFromDataTable(data, true);
+
+                        var end = ws.Dimension.End;
+                        for (int currRow = 2; currRow <= end.Row; currRow++)
+                        {
+
+                            if (int.TryParse(ws.Cells[currRow, 3].Text, out int v))
+                            {
+                                object firstValue = ws.Cells[currRow, 3].Text;
+                                ws.Cells[currRow, 3].Value = v;
+                            }
+
+                            if (int.TryParse(ws.Cells[currRow, 4].Text, out int n))
+                            {
+                                object firstValue = ws.Cells[currRow, 4].Text;
+                                ws.Cells[currRow, 4].Value = n;
+                            }
+
+                            if (int.TryParse(ws.Cells[currRow, 5].Text, out int s))
+                            {
+                                object firstValue = ws.Cells[currRow, 5].Text;
+                                ws.Cells[currRow, 5].Value = s;
+                            }
+                        }
                         pck.Save();
                     }
                 }
