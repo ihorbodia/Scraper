@@ -29,63 +29,55 @@ namespace ScraperGUI.Commands
                     !parent.FileProcessingLabelData.Equals(StringConsts.FileProcessingLabelData_Processing);
         }
 
-		public async void Execute(object parameter)
-		{
-			string chosenPath = parent.CountryFolderPathLabelData;
-			if (string.IsNullOrEmpty(chosenPath.Trim()))
-			{
-				return;
-			}
-			parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_Processing;
+        public async void Execute(object parameter)
+        {
+            string chosenPath = parent.CountryFolderPathLabelData;
+            if (string.IsNullOrEmpty(chosenPath.Trim()))
+            {
+                return;
+            }
+            parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_Processing;
+            await Task.Factory.StartNew(() =>
+            {
+                var dir = new DirectoryInfo(chosenPath);
+                var filesList = dir.GetFiles("*.xlsx").ToList();
+                FileInfo template = filesList.FirstOrDefault(x => x.Name.ToLower().Contains("template"));
+                if (template == null)
+                {
+                    return;
+                }
+                filesList = filesList.Where(item => !item.Name.ToLower().Contains("template")).ToList();
+                filesList = filesList.Where(item => !item.Name.ToLower().Contains("unlisted")).ToList();
 
-			var dir = new DirectoryInfo(chosenPath); //Unlisted list //Template 3
-			var filesList = dir.GetFiles("*.xlsx").ToList();
-			FileInfo template = filesList.FirstOrDefault(x => x.Name.ToLower().Contains("template"));
-			if (template == null)
-			{
-				return;
-			}
-			filesList = filesList.Where(item => !item.Name.ToLower().Contains("template")).ToList();
-			filesList = filesList.Where(item => !item.Name.ToLower().Contains("unlisted")).ToList();
+                var templateData = FilesHelper.GetDataTableFromExcelHeaders(template.FullName, false);
+                DataRow row = templateData.Rows[0];
 
-			var templateData = FilesHelper.GetDataTableFromExcelHeaders(template.FullName, false);
-			DataRow row = templateData.Rows[0];
+                foreach (var file in filesList)
+                {
+                    var data = FilesHelper.GetDataTableFromExcel(file.FullName, row);
+                    if (data == null)
+                    {
+                        return;
+                    }
+                    using (ExcelPackage pck = new ExcelPackage(new FileInfo(Path.Combine(parent.OutputFolderLabelData, getChangedName(file.Name)))))
+                    {
+                        ExcelWorksheet ws = pck.Workbook.Worksheets.FirstOrDefault(x => x.Name.Equals("Sheet1"));
+                        if (ws == null)
+                        {
+                            ws = pck.Workbook.Worksheets.Add("Sheet1");
+                        }
+                        ws.Cells["A1"].LoadFromDataTable(data, true);
+                        pck.Save();
+                    }
+                }
+            });
+            parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_Finish;
+            Console.WriteLine(StringConsts.FileProcessingLabelData_Finish);
+        }
 
-			foreach (var file in filesList)
-			{
-				var data = FilesHelper.GetDataTableFromExcel(file.FullName, row);
-				if (data == null)
-				{
-					return;
-				}
-				using (ExcelPackage pck = new ExcelPackage(new FileInfo(Path.Combine(parent.OutputFolderLabelData, file.Name))))
-				{
-					ExcelWorksheet ws = pck.Workbook.Worksheets.FirstOrDefault(x => x.Name.Equals("Sheet1"));
-					if (ws == null)
-					{
-						ws = pck.Workbook.Worksheets.Add("Sheet1");
-					}
-					ws.Cells["A1"].LoadFromDataTable(data, true);
-					pck.Save();
-				}
-			}
-			parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_Finish;
-			Console.WriteLine(StringConsts.FileProcessingLabelData_Finish);
-
-
-			////var table = FilesHelper.GetDataTableFromExcel(parent.FilePathLabelData);
-			//if (table != null)
-			//{
-			//	try
-			//	{
-			//		//await DownloadMultipleFilesAsync(table.AsEnumerable());
-			//	}
-			//	catch (Exception ex)
-			//	{
-			//		parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ErrorMessage;
-			//	}
-			//}
-
-		}
+        private string getChangedName(string name)
+        {
+            return name.Insert(name.IndexOf(" "), " 3");
+        }
 	}
 }
