@@ -77,7 +77,8 @@ namespace ScraperGUI.Commands
 
         private string getChangedName(string name)
         {
-            return name.Insert(name.IndexOf(" "), " 3");
+            var items = name.Split(' ');
+            return items[0] + " 3.xlsx";
         }
 	}
 }
