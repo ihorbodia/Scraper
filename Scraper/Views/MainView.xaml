@@ -17,12 +17,15 @@
             <TextBlock Canvas.Top="15" Text="{Binding Path=OutputFolderLabelData, Mode=OneWay}" Width="auto" TextWrapping="WrapWithOverflow" Height="25"></TextBlock>
             <TextBlock Canvas.Top="40" Text="{Binding Path=CountryFolderPathLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
             <TextBlock Canvas.Top="55" Text="{Binding Path=CountryFolderPathLabelData, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
+            <TextBlock Canvas.Top="80" Text="{Binding Path=SecondCountryFolderPathLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
+            <TextBlock Canvas.Top="95" Text="{Binding Path=SecondCountryFolderPathLabelData, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
             <TextBlock Canvas.Bottom="0" Text="{Binding Path=FileProcessingLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
             <TextBlock Canvas.Bottom="0" Canvas.Left="40" Text="{Binding Path=FileProcessingLabelData, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
         </Canvas>
         <DockPanel Grid.Row="1">
             <Button Height="25" Command="{Binding ChooseOutputFileCommand}" Content="Choose output folder" Width="120" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
             <Button Height="25" Command="{Binding ChooseCountryFolderCommand}" Content="Choose list folder" Width="120" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
+            <Button Height="25" Command="{Binding ChooseSecondCountryFolderCommand}" Content="Choose sec. list folder" Width="120" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
             <Button Height="25" Command="{Binding ProcessFileCommand}" Content="Process file" Width="90" Margin="10,2,5,2" HorizontalAlignment="Right"></Button>
         </DockPanel>
     </Grid>
