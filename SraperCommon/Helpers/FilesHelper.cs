@@ -69,6 +69,34 @@ namespace Sraper.Common
 			}
 		}
 
+		public static DataTable GetDataTableFromExcelAllData(string path, DataRow headerRow)
+		{
+			using (var pck = new OfficeOpenXml.ExcelPackage())
+			{
+				using (var stream = File.OpenRead(path))
+				{
+					pck.Load(stream);
+				}
+				var ws = pck.Workbook.Worksheets.First();
+				DataTable tbl = new DataTable();
+				for (int i = 0; i < headerRow.ItemArray.Length; i++)
+				{
+					var value = IsNullOrEmpty(headerRow[i].ToString().ToArray()) ? getSpaces(i) : headerRow[i].ToString();
+					tbl.Columns.Add(value);
+				}
+				for (int rowNum = 2; rowNum <= ws.Dimension.End.Row; rowNum++)
+				{
+					var wsRow = ws.Cells[rowNum, 1, rowNum, 7];
+					DataRow row = tbl.Rows.Add();
+					foreach (var cell in wsRow)
+					{
+						row[cell.Start.Column - 1] = cell.Text;
+					}
+				}
+				return tbl;
+			}
+		}
+
 		public static bool IsNullOrEmpty<T>(T[] array)
 		{
 			return array == null || array.Length == 0;

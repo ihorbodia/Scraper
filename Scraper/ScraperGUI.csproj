@@ -70,6 +70,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\ChooseSecondCountryFolderCommand.cs" />
     <Compile Include="Commands\ChooseCountryFolderCommand.cs" />
     <Compile Include="Commands\ChooseOutputFileCommand.cs" />
     <Compile Include="Commands\ProcessFileCommand.cs" />

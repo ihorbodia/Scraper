@@ -5,11 +5,11 @@ using System.Windows.Input;
 
 namespace ScraperGUI.Commands
 {
-    internal class ChooseOutputFileCommand : ICommand
+    internal class ChooseSecondCountryFolderCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
         readonly MainViewModel parent;
-        public ChooseOutputFileCommand(MainViewModel parent)
+        public ChooseSecondCountryFolderCommand(MainViewModel parent)
         {
             this.parent = parent;
             parent.PropertyChanged += delegate { CanExecuteChanged?.Invoke(this, EventArgs.Empty); };
@@ -21,10 +21,10 @@ namespace ScraperGUI.Commands
 
         public void Execute(object parameter)
         {
-			string chosenPath = FilesHelper.SelectFolder();
-			if (!string.IsNullOrEmpty(chosenPath.Trim()))
+            string chosenPath = FilesHelper.SelectFolder();
+            if (!string.IsNullOrEmpty(chosenPath.Trim()))
             {
-                parent.OutputFolderLabelData = chosenPath;
+                parent.SecondCountryFolderPathLabelData = chosenPath;
                 if (!string.IsNullOrEmpty(parent.CountryFolderPathLabelData) && 
 					!string.IsNullOrEmpty(parent.OutputFolderLabelData) && 
 					!string.IsNullOrEmpty(parent.SecondCountryFolderPathLabelData))
@@ -37,7 +37,7 @@ namespace ScraperGUI.Commands
                 }
                 if (string.IsNullOrEmpty(parent.OutputFolderLabelData))
                 {
-                    parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ChooseFile;
+                    parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ChooseFolder;
                 }
 				if (string.IsNullOrEmpty(parent.SecondCountryFolderPathLabelData))
 				{
