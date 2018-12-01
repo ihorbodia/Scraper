@@ -23,10 +23,10 @@
             <TextBlock Canvas.Bottom="0" Canvas.Left="40" Text="{Binding Path=FileProcessingLabelData, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
         </Canvas>
         <DockPanel Grid.Row="1">
-            <Button Height="25" Command="{Binding ChooseOutputFileCommand}" Content="Choose output folder" Width="120" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
-            <Button Height="25" Command="{Binding ChooseCountryFolderCommand}" Content="Choose list folder" Width="120" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
-            <Button Height="25" Command="{Binding ChooseSecondCountryFolderCommand}" Content="Choose sec. list folder" Width="120" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
-            <Button Height="25" Command="{Binding ProcessFileCommand}" Content="Process file" Width="90" Margin="10,2,5,2" HorizontalAlignment="Right"></Button>
+            <Button Height="25" Command="{Binding ChooseOutputFileCommand}" Content="Output folder" Width="95" Margin="5,2,5,2" HorizontalAlignment="Left" ></Button>
+            <Button Height="25" Command="{Binding ChooseCountryFolderCommand}" Content="Country folder" Width="95" Margin="5,2,5,2" HorizontalAlignment="Left" ></Button>
+            <Button Height="25" Command="{Binding ChooseSecondCountryFolderCommand}" Content="Country 2 folder" Width="95" Margin="5,2,5,2" HorizontalAlignment="Left" ></Button>
+            <Button Height="25" Command="{Binding ProcessFileCommand}" Content="Process file" Width="90" Margin="5,2,5,2" HorizontalAlignment="Right"></Button>
         </DockPanel>
     </Grid>
 </UserControl>

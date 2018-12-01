@@ -70,17 +70,12 @@ namespace ScraperGUI.Commands
 					var secondCountryFileData = FilesHelper.GetDataTableFromExcelAllData(secondCountryFile.FullName, row);
 					for (int i = 0; i < data.Rows.Count; i++)
 					{
-						if (i > secondCountryFileData.Rows.Count - 1)
-						{
-							break;
-						}
 						string yahooCode = data.Rows[i].ItemArray[2].ToString();
-						string secondYahooCode = secondCountryFileData.Rows[i].ItemArray[2].ToString();
-
-						if (yahooCode.Equals(secondYahooCode))
+						var searchedRow = secondCountryFileData.Rows.OfType<DataRow>().FirstOrDefault(x => x.ItemArray[2].ToString().Equals(yahooCode));
+						if (searchedRow != null)
 						{
-							data.Rows[i].SetField(5, secondCountryFileData.Rows[i].ItemArray[5].ToString());
-							data.Rows[i].SetField(6, secondCountryFileData.Rows[i].ItemArray[6].ToString());
+							data.Rows[i].SetField(5, searchedRow.ItemArray[5]);
+							data.Rows[i].SetField(6, searchedRow.ItemArray[6]);
 						}
 					}
 
@@ -96,23 +91,29 @@ namespace ScraperGUI.Commands
 						var end = ws.Dimension.End;
 						for (int currRow = 2; currRow <= end.Row; currRow++)
 						{
-
 							if (int.TryParse(ws.Cells[currRow, 3].Text, out int v))
 							{
-								object firstValue = ws.Cells[currRow, 3].Text;
 								ws.Cells[currRow, 3].Value = v;
 							}
 
 							if (int.TryParse(ws.Cells[currRow, 4].Text, out int n))
 							{
-								object firstValue = ws.Cells[currRow, 4].Text;
 								ws.Cells[currRow, 4].Value = n;
 							}
 
 							if (int.TryParse(ws.Cells[currRow, 5].Text, out int s))
 							{
-								object firstValue = ws.Cells[currRow, 5].Text;
 								ws.Cells[currRow, 5].Value = s;
+							}
+
+							if (double.TryParse(ws.Cells[currRow, 6].Text, out double d))
+							{
+								ws.Cells[currRow, 6].Value = d;
+							}
+
+							if (double.TryParse(ws.Cells[currRow, 7].Text, out double q))
+							{
+								ws.Cells[currRow, 7].Value = q;
 							}
 						}
 						pck.Save();
