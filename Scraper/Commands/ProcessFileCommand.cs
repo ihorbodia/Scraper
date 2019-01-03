@@ -27,12 +27,6 @@ namespace ScraperGUI.Commands
 					!parent.FileProcessingLabelData.Equals(StringConsts.FileProcessingLabelData_Processing);
 		}
 
-		private string getChangedName(string name)
-		{
-			var items = name.Split(' ');
-			return items[0] + " 3.xlsx";
-		}
-
 		public async void Execute(object parameter)
 		{
 			string chosenPath = parent.CountryFolderPathLabelData;
@@ -62,7 +56,7 @@ namespace ScraperGUI.Commands
 				foreach (var file in filesList)
 				{
 					var data = FilesHelper.GetDataTableFromExcel(file.FullName, row);
-					var secondCountryFile = secondCountryFilesList.FirstOrDefault(x => x.Name.Equals($"{file.Name.Split(' ')[0]} 2.xlsx"));
+					var secondCountryFile = secondCountryFilesList.FirstOrDefault(x => x.Name.Replace("2", "list").Equals(file.Name));
 					if (data == null || secondCountryFile == null)
 					{
 						continue;
@@ -79,7 +73,7 @@ namespace ScraperGUI.Commands
 						}
 					}
 
-					using (ExcelPackage pck = new ExcelPackage(new FileInfo(Path.Combine(parent.OutputFolderLabelData, getChangedName(file.Name)))))
+					using (ExcelPackage pck = new ExcelPackage(new FileInfo(Path.Combine(parent.OutputFolderLabelData, file.Name.Replace("list", "3")))))
 					{
 						ExcelWorksheet ws = pck.Workbook.Worksheets.FirstOrDefault(x => x.Name.Equals("Sheet1"));
 						if (ws == null)
