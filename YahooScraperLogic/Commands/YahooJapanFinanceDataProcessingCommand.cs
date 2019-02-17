@@ -92,51 +92,59 @@ namespace YahooScraperLogic.Commands
             Console.WriteLine(StringConsts.FileProcessingLabelData_Finish);
         }
 
-        private async Task DownloadFileAsync(DataRow row)
-        {
-            try
-            {
-                Yahoo.IgnoreEmptyRows = true;
+		private async Task DownloadFileAsync(DataRow row)
+		{
+			IReadOnlyList<Candle> history = null;
+			try
+			{
+				Yahoo.IgnoreEmptyRows = true;
 
 				string yahooCode = row[2] == null ? "" : row[2].ToString();
-				var history = await Yahoo.GetHistoricalAsync($"{yahooCode}.T", DateTime.Today.AddDays(-1), DateTime.Today, Period.Daily);
-				
+				history = await Yahoo.GetHistoricalAsync($"{yahooCode}.T", DateTime.Today.AddDays(-1), DateTime.Today, Period.Daily);
+				if (history != null && history.FirstOrDefault().Volume == 0)
+				{
+					ExtractDataFromWSJpage(row);
+				}
+			}
+			catch (Exception ex)
+			{
 				lock (lockObject)
-                {
-					var item = history.FirstOrDefault();
-					if (item?.Volume > 0)
+				{
+					if (ex.Message.Contains("Invalid ticker or endpoint for symbol"))
 					{
-						return;
+						 ExtractDataFromWSJpage(row);
 					}
-					string reductedCompanyName = row[10].ToString();
-					var wsjRow = WSJListTable.Select($"listing = '{reductedCompanyName}'").FirstOrDefault();
-					string code = row.Field<string>("WSJ code");
-					string bColumnWSJList = wsjRow.Field<string>("WSJ code");
-					string cColumnWSJLIst = wsjRow.Field<string>("WSJ prefix");
-
-					string url = $"https://quotes.wsj.com/{bColumnWSJList}/{cColumnWSJLIst}/{code}?mod=DNH_S_cq";
-					HtmlDocument doc = WebHelper.GetPageData(url);
-					int volume = Int32.Parse(doc.GetElementbyId("quote_volume").InnerText.Replace(",", "").Replace(".", ""));
-					if (volume <= 0)
+					else
 					{
-						errorRows.Add(JapanListTable.Rows.IndexOf(row));
+						errors.Add(row);
 					}
 				}
-            }
-            catch (Exception ex)
-            {
-                lock (lockObject)
-                {
-                    if (!ex.Message.Contains("Invalid ticker or endpoint for symbol"))
-                    {
-                        errors.Add(row);
-                    }
-                }
-                Console.WriteLine("Something wrong");
-            }
-        }
+			}
+		}
 
-        private async Task DownloadMultipleFilesAsync(IEnumerable<DataRow> rows)
+		private void ExtractDataFromWSJpage(DataRow row)
+		{
+			string reductedCompanyName = row[10].ToString();
+			var wsjRow = WSJListTable.Select($"listing = '{reductedCompanyName}'").FirstOrDefault();
+			string code = row.Field<string>("WSJ code");
+			string bColumnWSJList = wsjRow.Field<string>("WSJ code");
+			string cColumnWSJLIst = wsjRow.Field<string>("WSJ prefix");
+
+			string url = $"https://quotes.wsj.com/{bColumnWSJList}/{cColumnWSJLIst}/{code}?mod=DNH_S_cq";
+			HtmlDocument doc = WebHelper.GetPageData(url);
+			var volume = doc.GetElementbyId("quote_volume");
+			if (volume != null)
+			{
+				string test = volume.InnerText.Replace(",", "").Replace(".", "");
+				int vol = Int32.Parse(test);
+				if (vol <= 0)
+				{
+					errorRows.Add(JapanListTable.Rows.IndexOf(row));
+				}
+			}
+		}
+
+		private async Task DownloadMultipleFilesAsync(IEnumerable<DataRow> rows)
         {
 			counter++;
             await Task.WhenAll(rows.Select(row => DownloadFileAsync(row)));
