@@ -41,14 +41,6 @@ namespace Sraper.Common.Models
 				return null;
 			}
 			string html = string.Empty;
-			if (!URL.Contains("https://www."))
-			{
-				html = "https://www." + URL;
-			}
-			else
-			{
-				html = URL;
-			}
 			Encoding iso = Encoding.GetEncoding("iso-8859-1");
 			HtmlWeb web = new HtmlWeb()
 			{
@@ -58,7 +50,7 @@ namespace Sraper.Common.Models
 			HtmlDocument htmlDoc = null;
 			try
 			{
-				htmlDoc = web.Load(html);
+				htmlDoc = web.Load(URL);
 			}
 			catch (Exception ex)
 			{

@@ -17,26 +17,19 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="130"/>
             </Grid.ColumnDefinitions>
             <Canvas Grid.Column="0" Margin="10,10,5,0">
-                <TextBlock Canvas.Top="0" Text="{Binding Path=FilePathLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
-                <TextBlock Canvas.Top="15" Text="{Binding Path=FilePathLabelData, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="300" Width="auto"></TextBlock>
-                <TextBlock Canvas.Top="40" Text="{Binding Path=FolderForStoringFilesLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
-                <TextBlock Canvas.Top="55" Text="{Binding Path=FolderForStoringFilesLabelData, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
+                <TextBlock Canvas.Top="0" Text="{Binding Path=JapanListLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
+                <TextBlock Canvas.Top="15" Text="{Binding Path=JapanListLabelData, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="300" Width="auto"></TextBlock>
+                <TextBlock Canvas.Top="40" Text="{Binding Path=WSJCodesFileLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
+                <TextBlock Canvas.Top="55" Text="{Binding Path=WSJCodesFileLabelData, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
                 <TextBlock Canvas.Bottom="0" Text="{Binding Path=FileProcessingLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
                 <TextBlock Canvas.Bottom="0" Canvas.Left="40" Text="{Binding Path=FileProcessingLabelData, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
             </Canvas>
-            <Canvas Grid.Column="1" Margin="10,10,5,0">
-                <TextBlock Canvas.Top="0" Text="{Binding Path=DateFromLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
-                <DatePicker Canvas.Top="20" SelectedDate="{Binding SelectedDateFrom}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <TextBlock Canvas.Top="50" Text="{Binding Path=DateToLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
-                <DatePicker Canvas.Top="70" SelectedDate="{Binding SelectedDateTo}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            </Canvas>
         </Grid>
         <DockPanel Grid.Row="1">
-            <Button Height="25" Command="{Binding ChooseFileCommand}" Content="Choose file" Width="90" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
-            <Button Height="25" Command="{Binding ChooseCountryFolderCommand}" Content="Choose folder" Width="90" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
+            <Button Height="25" Command="{Binding ChooseFileCommand}" Content="Choose Japan list" Width="110" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
+            <Button Height="25" Command="{Binding ChooseCountryFolderCommand}" Content="Choose WSJ list" Width="110" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
             <Button Height="25" Command="{Binding ProcessFileCommand}" Content="Process file" Width="90" Margin="10,2,5,2" HorizontalAlignment="Right"></Button>
         </DockPanel>
     </Grid>

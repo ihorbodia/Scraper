@@ -21,7 +21,6 @@ namespace Scraper.ViewModel
         {
             ProcessFileCommand = new ProcessFileCommand(this);
             ChooseCountryFolderCommand = new ChooseCountryFolderCommand(this);
-            ChooseFileCommand = new ChooseFileCommand(this);
             FilePathLabel = StringConsts.FilePathLabelConst;
             FileProcessingLabel = StringConsts.FileProcessingLabelConst;
             CountryFolderPathLabel = StringConsts.CountryFolderPathLabelConst;

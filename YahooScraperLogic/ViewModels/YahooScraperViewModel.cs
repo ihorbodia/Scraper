@@ -9,70 +9,34 @@ namespace YahooScraperLogic.ViewModels
     public class YahooScraperViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private string _filePathLabel;
-        private string _filePathLabelData;
+        private string _japanListFileLabel;
+        private string _japanListFileLabelData;
 
         private string _dateFromlabel;
         private string _dateTolabel;
 
-        private string _folderForStoringFilesLabel;
-        private string _folderForStoringFilesLabelData;
+        private string _wsjCodesListLabel;
+        private string _wsjCodesListLabelData;
 
         private string _fileProcessingLabel;
         private string _fileProcessingLabelData;
 
-        private DateTime _selectedDateFrom;
-        private DateTime _selectedDateTo;
-
         public YahooScraperViewModel()
         {
             ProcessFileCommand = new YahooJapanFinanceDataProcessingCommand(this);
-            ChooseCountryFolderCommand = new ChooseFolderForStoringCommand(this);
-            ChooseFileCommand = new ChooseFileCommand(this);
-            FilePathLabel = StringConsts.FilePathLabelConst;
+            ChooseCountryFolderCommand = new ChooseWSJListFileCommand(this);
+            ChooseFileCommand = new ChooseJapanListFileCommand(this);
+            JapanListLabel = StringConsts.JapanListFileLabel;
             FileProcessingLabel = StringConsts.FileProcessingLabelConst;
-            FolderForStoringFilesLabel = StringConsts.CountryFolderPathLabelConst;
+            WSJCodesFileLabel = StringConsts.WSJListFileLabel;
             FileProcessingLabelData = string.Empty;
             DateFromLabel = StringConsts.DateFromLabelConst;
             DateToLabel = StringConsts.DateToLabelConst;
-            SelectedDateFrom = DateTime.Now;
-            SelectedDateTo = DateTime.Now;
         }
 
         public ICommand ProcessFileCommand { get; private set; }
         public ICommand ChooseCountryFolderCommand { get; private set; }
         public ICommand ChooseFileCommand { get; private set; }
-
-        public DateTime SelectedDateFrom
-        {
-            get
-            {
-                return _selectedDateFrom;
-            }
-            set
-            {
-                if (_selectedDateFrom != value)
-                {
-                    _selectedDateFrom = value;
-                    RaisePropertyChanged(nameof(SelectedDateFrom));
-                }
-            }
-        }
-        public DateTime SelectedDateTo
-        {
-            get
-            {
-                return _selectedDateTo;
-            }
-            set
-            {
-                if (_selectedDateTo != value)
-                {
-                    _selectedDateTo = value;
-                    RaisePropertyChanged(nameof(SelectedDateTo));
-                }
-            }
-        }
 
         public string DateFromLabel
         {
@@ -105,33 +69,33 @@ namespace YahooScraperLogic.ViewModels
             }
         }
 
-        public string FilePathLabel
+        public string JapanListLabel
         {
             get
             {
-                return _filePathLabel;
+                return _japanListFileLabel;
             }
             private set
             {
-                if (_filePathLabel != value)
+                if (_japanListFileLabel != value)
                 {
-                    _filePathLabel = value;
-                    RaisePropertyChanged(nameof(FilePathLabel));
+                    _japanListFileLabel = value;
+                    RaisePropertyChanged(nameof(JapanListLabel));
                 }
             }
         }
-        public string FilePathLabelData
+        public string JapanListLabelData
         {
             get
             {
-                return _filePathLabelData;
+                return _japanListFileLabelData;
             }
             set
             {
-                if (_filePathLabelData != value)
+                if (_japanListFileLabelData != value)
                 {
-                    _filePathLabelData = value;
-                    RaisePropertyChanged(nameof(FilePathLabelData));
+                    _japanListFileLabelData = value;
+                    RaisePropertyChanged(nameof(JapanListLabelData));
                 }
             }
         }
@@ -167,33 +131,33 @@ namespace YahooScraperLogic.ViewModels
             }
         }
 
-        public string FolderForStoringFilesLabel
+        public string WSJCodesFileLabel
         {
             get
             {
-                return _folderForStoringFilesLabel;
+                return _wsjCodesListLabel;
             }
             private set
             {
-                if (_filePathLabel != value)
+                if (_japanListFileLabel != value)
                 {
-                    _folderForStoringFilesLabel = value;
-                    RaisePropertyChanged(nameof(FolderForStoringFilesLabel));
+                    _wsjCodesListLabel = value;
+                    RaisePropertyChanged(nameof(WSJCodesFileLabel));
                 }
             }
         }
-        public string FolderForStoringFilesLabelData
+        public string WSJCodesFileLabelData
         {
             get
             {
-                return _folderForStoringFilesLabelData;
+                return _wsjCodesListLabelData;
             }
             set
             {
-                if (_folderForStoringFilesLabelData != value)
+                if (_wsjCodesListLabelData != value)
                 {
-                    _folderForStoringFilesLabelData = value;
-                    RaisePropertyChanged(nameof(FolderForStoringFilesLabelData));
+                    _wsjCodesListLabelData = value;
+                    RaisePropertyChanged(nameof(WSJCodesFileLabelData));
                 }
             }
         }

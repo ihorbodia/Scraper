@@ -23,21 +23,20 @@ namespace YahooScraperLogic.Commands
         }
         public bool CanExecute(object parameter)
         {
-            return !string.IsNullOrEmpty(parent.FileProcessingLabelData) &&
-                    !string.IsNullOrEmpty(parent.FolderForStoringFilesLabelData) &&
-                    !parent.FileProcessingLabelData.Equals(StringConsts.FileProcessingLabelData_Processing)
-                    && (parent.SelectedDateFrom.Date < parent.SelectedDateTo.Date);
+			return !string.IsNullOrEmpty(parent.FileProcessingLabelData) &&
+					!string.IsNullOrEmpty(parent.WSJCodesFileLabelData) &&
+					!parent.FileProcessingLabelData.Equals(StringConsts.FileProcessingLabelData_Processing);
         }
 
         public async void Execute(object parameter)
         {
-            string chosenPath = parent.FilePathLabelData;
+            string chosenPath = parent.JapanListLabelData;
             if (string.IsNullOrEmpty(chosenPath.Trim()))
             {
                 return;
             }
             parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_Processing;
-            var table = FilesHelper.GetDataTableFromExcel(parent.FilePathLabelData);
+            var table = FilesHelper.GetDataTableFromExcel(parent.JapanListLabelData);
             if (table != null)
             {
                 try
@@ -57,13 +56,7 @@ namespace YahooScraperLogic.Commands
         {
             try
             {
-                var history = await Yahoo.GetHistoricalAsync(row[2].ToString(), new DateTime(
-                    parent.SelectedDateFrom.Year,
-                    parent.SelectedDateFrom.Month,
-                    parent.SelectedDateFrom.Day), new DateTime(
-                    parent.SelectedDateTo.Year,
-                    parent.SelectedDateTo.Month,
-                    parent.SelectedDateTo.Day), Period.Daily);
+				var history = await Yahoo.GetHistoricalAsync(row[2].ToString());
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine("Date;Close;Volume");
                 foreach (var item in history)
@@ -73,7 +66,7 @@ namespace YahooScraperLogic.Commands
                         item.Close,
                         item.Volume));
                 }
-                File.WriteAllText(Path.Combine(parent.FolderForStoringFilesLabelData, row[1] + ".csv"), sb.ToString());
+                File.WriteAllText(Path.Combine(parent.WSJCodesFileLabelData, row[1] + ".csv"), sb.ToString());
             }
             catch (Exception ex)
             {

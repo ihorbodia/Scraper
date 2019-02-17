@@ -74,8 +74,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\ChooseFolderForStoringCommand.cs" />
-    <Compile Include="Commands\ChooseFileCommand.cs" />
+    <Compile Include="Commands\ChooseWSJListFileCommand.cs" />
+    <Compile Include="Commands\ChooseJapanListFileCommand.cs" />
     <Compile Include="Commands\YahooJapanFinanceDataProcessingCommand.cs" />
     <Compile Include="Commands\YahooUSFinanceDataProcessingCommand.cs" />
     <Compile Include="ViewModels\YahooScraperViewModel.cs" />

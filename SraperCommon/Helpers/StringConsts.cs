@@ -13,5 +13,8 @@
         public const string FileProcessingLabelData_ErrorMessage = "Something wrong";
         public const string DateToLabelConst = "Date to:";
         public const string DateFromLabelConst = "Date from:";
-    }
+
+		public const string JapanListFileLabel = "Choosen Japan List";
+		public const string WSJListFileLabel = "Choosen WSJ List";
+	}
 }

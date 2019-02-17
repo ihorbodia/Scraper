@@ -61,10 +61,13 @@ namespace Sraper.Common
                 }
                 var ws = pck.Workbook.Worksheets.First();
                 DataTable tbl = new DataTable();
-                for (int i = 1; i <= ws.Dimension.End.Column; i++)
-                {
-                    tbl.Columns.Add();
-                }
+				if (hasHeader)
+				{
+					for (int i = 1; i <= ws.Dimension.End.Column; i++)
+					{
+						tbl.Columns.Add(ws.Cells[1, i].Text);
+					}
+				}
                 var startRow = hasHeader ? 2 : 1;
                 for (int rowNum = startRow; rowNum <= ws.Dimension.End.Row; rowNum++)
                 {
@@ -79,7 +82,7 @@ namespace Sraper.Common
                         row[cell.Start.Column - 1] = cell.Text;
                     }
                 }
-                return tbl;
+				return tbl;
             }
         }
 

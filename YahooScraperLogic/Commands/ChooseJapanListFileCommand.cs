@@ -5,11 +5,11 @@ using YahooScraperLogic.ViewModels;
 
 namespace YahooScraperLogic.Commands
 {
-    public class ChooseFolderForStoringCommand : ICommand
+    class ChooseJapanListFileCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
         readonly YahooScraperViewModel parent;
-        public ChooseFolderForStoringCommand(YahooScraperViewModel parent)
+        public ChooseJapanListFileCommand(YahooScraperViewModel parent)
         {
             this.parent = parent;
             parent.PropertyChanged += delegate { CanExecuteChanged?.Invoke(this, EventArgs.Empty); };
@@ -21,19 +21,19 @@ namespace YahooScraperLogic.Commands
 
         public void Execute(object parameter)
         {
-            string chosenPath = FilesHelper.SelectFolder();
+            string chosenPath = FilesHelper.SelectFile();
             if (!string.IsNullOrEmpty(chosenPath.Trim()))
             {
-                parent.FolderForStoringFilesLabelData = chosenPath;
-                if (!string.IsNullOrEmpty(parent.FolderForStoringFilesLabelData) && !string.IsNullOrEmpty(parent.FilePathLabelData))
+                parent.JapanListLabelData = chosenPath;
+                if (!string.IsNullOrEmpty(parent.WSJCodesFileLabelData) && !string.IsNullOrEmpty(parent.JapanListLabelData))
                 {
                     parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_CanProcess;
                 }
-                if (string.IsNullOrEmpty(parent.FolderForStoringFilesLabelData))
+                if (string.IsNullOrEmpty(parent.WSJCodesFileLabelData))
                 {
                     parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ChooseFolder;
                 }
-                if (string.IsNullOrEmpty(parent.FilePathLabelData))
+                if (string.IsNullOrEmpty(parent.JapanListLabelData))
                 {
                     parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ChooseFile;
                 }
