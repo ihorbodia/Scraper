@@ -125,10 +125,19 @@ namespace YahooScraperLogic.Commands
 		private void ExtractDataFromWSJpage(DataRow row)
 		{
 			string reductedCompanyName = row[10].ToString();
-			var wsjRow = WSJListTable.Select($"listing = '{reductedCompanyName}'").FirstOrDefault();
-			string code = row.Field<string>("WSJ code");
-			string bColumnWSJList = wsjRow.Field<string>("WSJ code");
-			string cColumnWSJLIst = wsjRow.Field<string>("WSJ prefix");
+			DataRow wsjRow = null;
+			foreach (DataRow wsjRowItem in WSJListTable.Rows)
+			{
+				if (wsjRowItem[0] != null && wsjRowItem[0].ToString().Trim().Equals(reductedCompanyName.Trim()))
+				{
+					wsjRow = wsjRowItem;
+					break;
+				}
+			}
+			
+			string code = row[3]?.ToString();
+			string bColumnWSJList = wsjRow[1]?.ToString();
+			string cColumnWSJLIst = wsjRow[2]?.ToString();
 
 			string url = $"https://quotes.wsj.com/{bColumnWSJList}/{cColumnWSJLIst}/{code}?mod=DNH_S_cq";
 			HtmlDocument doc = WebHelper.GetPageData(url);
