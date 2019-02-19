@@ -78,12 +78,16 @@ namespace YahooScraperLogic.Commands
 						{
 							var range = sheet.SelectedRange[item, sheet.Dimension.Start.Column, item, sheet.Dimension.End.Column];
 							range.Style.Fill.PatternType = ExcelFillStyle.Solid;
-							range.Style.Fill.BackgroundColor.SetColor(Color.LightGray);
+							range.Style.Fill.BackgroundColor.SetColor(Color.Red);
 						}
-						pck.Save();
+                        using (FileStream fs = new FileStream(parent.JapanListLabelData, FileMode.Open))
+                        {
+                            pck.SaveAs(fs);
+                        }
 					}
 					catch (Exception e)
 					{
+                        Console.WriteLine(e);
 						parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ErrorMessage;
 					}
 				}
@@ -100,7 +104,7 @@ namespace YahooScraperLogic.Commands
 				Yahoo.IgnoreEmptyRows = true;
 
 				string yahooCode = row[2] == null ? "" : row[2].ToString();
-				history = await Yahoo.GetHistoricalAsync($"{yahooCode}.T", DateTime.Today.AddDays(-1), DateTime.Today, Period.Daily);
+				history = await Yahoo.GetHistoricalAsync($"{yahooCode}.T", DateTime.Today, DateTime.Today, Period.Daily);
 				if (history != null && history.FirstOrDefault().Volume == 0)
 				{
 					ExtractDataFromWSJpage(row);
@@ -151,6 +155,10 @@ namespace YahooScraperLogic.Commands
 					errorRows.Add(JapanListTable.Rows.IndexOf(row));
 				}
 			}
+            else
+            {
+                errorRows.Add(JapanListTable.Rows.IndexOf(row) + 2);
+            }
 		}
 
 		private async Task DownloadMultipleFilesAsync(IEnumerable<DataRow> rows)
