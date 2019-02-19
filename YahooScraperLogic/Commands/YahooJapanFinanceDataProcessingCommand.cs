@@ -63,34 +63,25 @@ namespace YahooScraperLogic.Commands
 
 			if (errorRows.Count > 0)
 			{
-				using (var pck = new OfficeOpenXml.ExcelPackage())
-				{
-					try
-					{
-						using (var stream = File.OpenRead(parent.JapanListLabelData))
-						{
-							pck.Load(stream);
-						}
-
-						var sheet = pck.Workbook.Worksheets.FirstOrDefault();
-
-						foreach (var item in errorRows)
-						{
-							var range = sheet.SelectedRange[item, sheet.Dimension.Start.Column, item, sheet.Dimension.End.Column];
-							range.Style.Fill.PatternType = ExcelFillStyle.Solid;
-							range.Style.Fill.BackgroundColor.SetColor(Color.Red);
-						}
-                        using (FileStream fs = new FileStream(parent.JapanListLabelData, FileMode.Open))
+                using (var pck = new OfficeOpenXml.ExcelPackage(new FileInfo(parent.JapanListLabelData)))
+                {
+                    try
+                    {
+                        var sheet = pck.Workbook.Worksheets.FirstOrDefault();
+                        foreach (var item in errorRows)
                         {
-                            pck.SaveAs(fs);
+                            var range = sheet.SelectedRange[item, sheet.Dimension.Start.Column, item, sheet.Dimension.End.Column];
+                            range.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                            range.Style.Fill.BackgroundColor.SetColor(Color.IndianRed);
                         }
-					}
-					catch (Exception e)
-					{
+                        pck.Save();
+                    }
+                    catch (Exception e)
+                    {
                         Console.WriteLine(e);
-						parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ErrorMessage;
-					}
-				}
+                        parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ErrorMessage;
+                    }
+                }
 			}
 			parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_Finish;
             Console.WriteLine(StringConsts.FileProcessingLabelData_Finish);
