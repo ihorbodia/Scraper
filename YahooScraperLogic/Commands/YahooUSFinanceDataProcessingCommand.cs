@@ -30,13 +30,13 @@ namespace YahooScraperLogic.Commands
 
         public async void Execute(object parameter)
         {
-            string chosenPath = parent.JapanListLabelData;
+            string chosenPath = parent.CountryListLabelData;
             if (string.IsNullOrEmpty(chosenPath.Trim()))
             {
                 return;
             }
             parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_Processing;
-            var table = FilesHelper.GetDataTableFromExcel(parent.JapanListLabelData);
+            var table = FilesHelper.GetDataTableFromExcel(parent.CountryListLabelData);
             if (table != null)
             {
                 try

@@ -21,12 +21,14 @@ namespace YahooScraperLogic.ViewModels
         private string _fileProcessingLabel;
         private string _fileProcessingLabelData;
 
-        public YahooScraperViewModel()
+		private bool _processingJapanFile;
+
+		public YahooScraperViewModel()
         {
             ProcessFileCommand = new YahooJapanFinanceDataProcessingCommand(this);
             ChooseCountryFolderCommand = new ChooseWSJListFileCommand(this);
             ChooseFileCommand = new ChooseJapanListFileCommand(this);
-            JapanListLabel = StringConsts.JapanListFileLabel;
+            CountryListLabel = StringConsts.CountryListFileLabel;
             FileProcessingLabel = StringConsts.FileProcessingLabelConst;
             WSJCodesFileLabel = StringConsts.WSJListFileLabel;
             FileProcessingLabelData = string.Empty;
@@ -38,7 +40,23 @@ namespace YahooScraperLogic.ViewModels
         public ICommand ChooseCountryFolderCommand { get; private set; }
         public ICommand ChooseFileCommand { get; private set; }
 
-        public string DateFromLabel
+		public bool ProcessingJapanFile
+		{
+			get
+			{
+				return _processingJapanFile;
+			}
+			set
+			{
+				if (_processingJapanFile != value)
+				{
+					_processingJapanFile = value;
+					RaisePropertyChanged(nameof(ProcessingJapanFile));
+				}
+			}
+		}
+
+		public string DateFromLabel
         {
             get
             {
@@ -69,8 +87,8 @@ namespace YahooScraperLogic.ViewModels
             }
         }
 
-        public string JapanListLabel
-        {
+        public string CountryListLabel
+		{
             get
             {
                 return _japanListFileLabel;
@@ -80,12 +98,12 @@ namespace YahooScraperLogic.ViewModels
                 if (_japanListFileLabel != value)
                 {
                     _japanListFileLabel = value;
-                    RaisePropertyChanged(nameof(JapanListLabel));
+                    RaisePropertyChanged(nameof(CountryListLabel));
                 }
             }
         }
-        public string JapanListLabelData
-        {
+        public string CountryListLabelData
+		{
             get
             {
                 return _japanListFileLabelData;
@@ -95,7 +113,7 @@ namespace YahooScraperLogic.ViewModels
                 if (_japanListFileLabelData != value)
                 {
                     _japanListFileLabelData = value;
-                    RaisePropertyChanged(nameof(JapanListLabelData));
+                    RaisePropertyChanged(nameof(CountryListLabelData));
                 }
             }
         }

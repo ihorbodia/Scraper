@@ -25,7 +25,7 @@ namespace YahooScraperLogic.Commands
             if (!string.IsNullOrEmpty(chosenPath.Trim()))
             {
                 parent.WSJCodesFileLabelData = chosenPath;
-                if (!string.IsNullOrEmpty(parent.WSJCodesFileLabelData) && !string.IsNullOrEmpty(parent.JapanListLabelData))
+                if (!string.IsNullOrEmpty(parent.WSJCodesFileLabelData) && !string.IsNullOrEmpty(parent.CountryListLabelData))
                 {
                     parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_CanProcess;
                 }
@@ -33,7 +33,7 @@ namespace YahooScraperLogic.Commands
                 {
                     parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ChooseFolder;
                 }
-                if (string.IsNullOrEmpty(parent.JapanListLabelData))
+                if (string.IsNullOrEmpty(parent.CountryListLabelData))
                 {
                     parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ChooseFile;
                 }

@@ -14,7 +14,7 @@
         public const string DateToLabelConst = "Date to:";
         public const string DateFromLabelConst = "Date from:";
 
-		public const string JapanListFileLabel = "Choosen Japan List:";
+		public const string CountryListFileLabel = "Choosen country List:";
 		public const string WSJListFileLabel = "Choosen WSJ List:";
 	}
 }

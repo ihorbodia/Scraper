@@ -18,18 +18,19 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Canvas Grid.Column="0" Margin="10,10,5,0">
-                <TextBlock Canvas.Top="0" Text="{Binding Path=JapanListLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
-                <TextBlock Canvas.Top="15" Text="{Binding Path=JapanListLabelData, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="300" Width="auto"></TextBlock>
+            <Canvas Grid.Column="0" Margin="10,10,5,10">
+                <TextBlock Canvas.Top="0" Text="{Binding Path=CountryListLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
+                <TextBlock Canvas.Top="15" Text="{Binding Path=CountryListLabelData, Mode=OneWay}" TextTrimming="CharacterEllipsis" Height="25" MaxWidth="300" Width="auto"></TextBlock>
                 <TextBlock Canvas.Top="40" Text="{Binding Path=WSJCodesFileLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
                 <TextBlock Canvas.Top="55" Text="{Binding Path=WSJCodesFileLabelData, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
                 <TextBlock Canvas.Bottom="0" Text="{Binding Path=FileProcessingLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
                 <TextBlock Canvas.Bottom="0" Canvas.Left="40" Text="{Binding Path=FileProcessingLabelData, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
+                <CheckBox Content="Processing Japan file" IsChecked="{Binding Path=ProcessingJapanFile, Mode=TwoWay}" Canvas.Left="296" Canvas.Top="3" />
             </Canvas>
         </Grid>
         <DockPanel Grid.Row="1">
-            <Button Height="25" Command="{Binding ChooseFileCommand}" Content="Choose Japan list" Width="110" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
-            <Button Height="25" Command="{Binding ChooseCountryFolderCommand}" Content="Choose WSJ list" Width="110" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
+            <Button Height="25" Command="{Binding ChooseFileCommand}" Content="Choose countries list" Width="120" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
+            <Button Height="25" Command="{Binding ChooseCountryFolderCommand}" Content="Choose WSJ list" Width="120" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
             <Button Height="25" Command="{Binding ProcessFileCommand}" Content="Process file" Width="90" Margin="10,2,5,2" HorizontalAlignment="Right"></Button>
         </DockPanel>
     </Grid>
