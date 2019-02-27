@@ -25,7 +25,7 @@
                 <TextBlock Canvas.Top="55" Text="{Binding Path=WSJCodesFileLabelData, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
                 <TextBlock Canvas.Bottom="0" Text="{Binding Path=FileProcessingLabel, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
                 <TextBlock Canvas.Bottom="0" Canvas.Left="40" Text="{Binding Path=FileProcessingLabelData, Mode=OneWay}" Width="auto" Height="25"></TextBlock>
-                <CheckBox Content="Processing Japan file" IsChecked="{Binding Path=ProcessingJapanFile, Mode=TwoWay}" Canvas.Left="296" Canvas.Top="3" />
+                <CheckBox Canvas.Bottom="0" Canvas.Right="10" Content="Processing Japan file" IsChecked="{Binding Path=ProcessingJapanFile, Mode=TwoWay}"/>
             </Canvas>
         </Grid>
         <DockPanel Grid.Row="1">

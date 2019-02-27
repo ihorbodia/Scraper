@@ -51,14 +51,15 @@ namespace YahooScraperLogic.Commands
 			WSJListTable = FilesHelper.GetDataTableFromExcel(parent.WSJCodesFileLabelData, true);
 			if (JapanListTable != null)
             {
-                try
-                {
-                    await DownloadMultipleFilesAsync(JapanListTable.AsEnumerable());
-                }
-                catch (Exception ex)
-                {
-                    parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ErrorMessage;
-                }
+				try
+				{
+					var symbols = JapanListTable.AsEnumerable().Select(x => x[2]?.ToString()).ToList();
+					await Task.WhenAll(symbols.Select(symbol => DownloadDataAsync(symbol)));
+				}
+				catch (Exception ex)
+				{
+					parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ErrorMessage;
+				}
             }
 
 			if (errorRows.Count > 0)
@@ -87,44 +88,34 @@ namespace YahooScraperLogic.Commands
             Console.WriteLine(StringConsts.FileProcessingLabelData_Finish);
         }
 
-		private async Task DownloadFileAsync(DataRow row)
+		private async Task DownloadDataAsync(string symbol)
 		{
-			IReadOnlyList<Candle> history = null;
-			try
+			string code = $"{symbol}";
+			if (parent.ProcessingJapanFile)
 			{
-				Yahoo.IgnoreEmptyRows = true;
-
-				string yahooCode = row[2] == null ? "" : row[2].ToString();
-				string code = $"{yahooCode}";
-				if (parent.ProcessingJapanFile)
-				{
-					code += ".T";
-				}
-				history = await Yahoo.GetHistoricalAsync(code, DateTime.Today, DateTime.Today, Period.Daily);
-				if (history != null && history.FirstOrDefault().Volume == 0)
-				{
-					ExtractDataFromWSJpage(row);
-				}
+				code += ".T";
 			}
-			catch (Exception ex)
+			var result = await Yahoo.Symbols(code).Fields(Field.RegularMarketVolume).QueryAsync();
+			if (result.FirstOrDefault().Value == null)
 			{
-				lock (lockObject)
-				{
-					if (ex.Message.Contains("Invalid ticker or endpoint for symbol"))
-					{
-						 ExtractDataFromWSJpage(row);
-					}
-					else
-					{
-						errors.Add(row);
-					}
-				}
+				ExtractDataFromWSJpage(symbol);
 			}
 		}
 
-		private void ExtractDataFromWSJpage(DataRow row)
+		private void ExtractDataFromWSJpage(string symbol)
 		{
-			string reductedCompanyName = row[10].ToString();
+			DataRow listRow = null;
+			foreach (DataRow japanRowItem in JapanListTable.Rows)
+			{
+				if (japanRowItem[0] != null && japanRowItem[2].ToString().Trim().Equals(symbol.Trim()))
+				{
+					listRow = japanRowItem;
+					break;
+				}
+			}
+
+			string reductedCompanyName = listRow[10].ToString();
+
 			DataRow wsjRow = null;
 			foreach (DataRow wsjRowItem in WSJListTable.Rows)
 			{
@@ -134,8 +125,8 @@ namespace YahooScraperLogic.Commands
 					break;
 				}
 			}
-			
-			string code = row[3]?.ToString();
+
+			string code = symbol.ToLower().Replace(".si", "");
 			string bColumnWSJList = wsjRow[1]?.ToString();
 			string cColumnWSJLIst = wsjRow[2]?.ToString();
 
@@ -144,29 +135,17 @@ namespace YahooScraperLogic.Commands
 			var volume = doc.GetElementbyId("quote_volume");
 			if (volume != null)
 			{
-				string test = volume.InnerText.Replace(",", "").Replace(".", "");
-				int vol = Int32.Parse(test);
+				string strVolume = volume.InnerText.Replace(",", "").Replace(".", "");
+				int vol = Int32.Parse(strVolume);
 				if (vol <= 0)
 				{
-					errorRows.Add(JapanListTable.Rows.IndexOf(row));
+					errorRows.Add(JapanListTable.Rows.IndexOf(listRow));
 				}
 			}
             else
             {
-                errorRows.Add(JapanListTable.Rows.IndexOf(row) + 2);
+                errorRows.Add(JapanListTable.Rows.IndexOf(listRow) + 2);
             }
 		}
-
-		private async Task DownloadMultipleFilesAsync(IEnumerable<DataRow> rows)
-        {
-			counter++;
-            await Task.WhenAll(rows.Select(row => DownloadFileAsync(row)));
-            if (errors.Any() && counter < 10)
-            {
-                List<DataRow> items = new List<DataRow>(errors);
-                errors.Clear();
-                await DownloadMultipleFilesAsync(items);
-            }
-        }
     }
 }
