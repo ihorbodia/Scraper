@@ -31,7 +31,7 @@ namespace YahooScraperLogic.Commands
                 }
                 if (string.IsNullOrEmpty(parent.WSJCodesFileLabelData))
                 {
-                    parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ChooseFolder;
+                    parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_ChooseAnotherFile;
                 }
                 if (string.IsNullOrEmpty(parent.CountryListLabelData))
                 {

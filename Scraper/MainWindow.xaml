@@ -6,7 +6,7 @@
         xmlns:yahooSraper="clr-namespace:YahooScraperLogic.Views;assembly=YahooScraperLogic"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" 
-        Title="Volume values analyzer v.1.3" 
+        Title="Shares scraper v.1.0" 
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"
         MinHeight="250" 
