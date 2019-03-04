@@ -5,11 +5,11 @@ using YahooScraperLogic.ViewModels;
 
 namespace YahooScraperLogic.Commands
 {
-    public class ChooseWSJListFileCommand : ICommand
+    public class ChooseCountryFileCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
-        readonly YahooScraperViewModel parent;
-        public ChooseWSJListFileCommand(YahooScraperViewModel parent)
+        readonly ScraperViewModel parent;
+        public ChooseCountryFileCommand(ScraperViewModel parent)
         {
             this.parent = parent;
             parent.PropertyChanged += delegate { CanExecuteChanged?.Invoke(this, EventArgs.Empty); };

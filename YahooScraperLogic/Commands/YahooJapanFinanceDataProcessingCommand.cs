@@ -19,14 +19,14 @@ namespace YahooScraperLogic.Commands
     public class YahooJapanFinanceDataProcessingCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
-        readonly YahooScraperViewModel parent;
+        readonly ScraperViewModel parent;
         List<DataRow> errors = new List<DataRow>();
 		DataTable JapanListTable = new DataTable();
 		DataTable WSJListTable = new DataTable();
 		List<int> errorRows = new List<int>();
 		int counter = 0;
         object lockObject = new object();
-        public YahooJapanFinanceDataProcessingCommand(YahooScraperViewModel parent)
+        public YahooJapanFinanceDataProcessingCommand(ScraperViewModel parent)
         {
             this.parent = parent;
             parent.PropertyChanged += delegate { CanExecuteChanged?.Invoke(this, EventArgs.Empty); };

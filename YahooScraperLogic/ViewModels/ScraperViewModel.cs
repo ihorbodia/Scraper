@@ -6,7 +6,7 @@ using YahooScraperLogic.Commands;
 
 namespace YahooScraperLogic.ViewModels
 {
-    public class YahooScraperViewModel : INotifyPropertyChanged
+    public class ScraperViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private string _japanListFileLabel;
@@ -23,11 +23,11 @@ namespace YahooScraperLogic.ViewModels
 
 		private bool _processingJapanFile;
 
-		public YahooScraperViewModel()
+		public ScraperViewModel()
         {
-            ProcessFileCommand = new YahooJapanFinanceDataProcessingCommand(this);
-            ChooseCountryFolderCommand = new ChooseWSJListFileCommand(this);
-            ChooseFileCommand = new ChooseJapanListFileCommand(this);
+            ProcessFileCommand = new ScrapeDataFromWebCommand(this);
+            ChooseCountryFolderCommand = new ChooseCountryFileCommand(this);
+            ChooseFileCommand = new ChooseCountryListFileCommand(this);
             CountryListLabel = StringConsts.CountryListFileLabel;
             FileProcessingLabel = StringConsts.FileProcessingLabelConst;
             WSJCodesFileLabel = StringConsts.WSJListFileLabel;

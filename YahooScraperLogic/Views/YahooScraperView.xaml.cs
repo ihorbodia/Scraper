@@ -11,7 +11,7 @@ namespace YahooScraperLogic.Views
         public YahooScraperView()
         {
             InitializeComponent();
-            DataContext = new YahooScraperViewModel();
+            DataContext = new ScraperViewModel();
         }
     }
 }

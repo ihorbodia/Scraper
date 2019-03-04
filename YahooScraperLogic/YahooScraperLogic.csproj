@@ -73,11 +73,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\ChooseWSJListFileCommand.cs" />
-    <Compile Include="Commands\ChooseJapanListFileCommand.cs" />
-    <Compile Include="Commands\YahooJapanFinanceDataProcessingCommand.cs" />
-    <Compile Include="Commands\YahooUSFinanceDataProcessingCommand.cs" />
-    <Compile Include="ViewModels\YahooScraperViewModel.cs" />
+    <Compile Include="Commands\ChooseCountryListFileCommand.cs" />
+    <Compile Include="Commands\ChooseCountryFileCommand.cs" />
+    <Compile Include="Commands\ScrapeDataFromWebCommand.cs" />
+    <Compile Include="ViewModels\ScraperViewModel.cs" />
     <Compile Include="Views\YahooScraperView.xaml.cs">
       <DependentUpon>YahooScraperView.xaml</DependentUpon>
     </Compile>
