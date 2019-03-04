@@ -29,7 +29,7 @@
         </Grid>
         <DockPanel Grid.Row="1">
             <Button Height="25" Command="{Binding ChooseFileCommand}" Content="Choose country list" Width="120" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
-            <Button Height="25" Command="{Binding ChooseCountryFolderCommand}" Content="Choose country file" Width="120" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
+            <Button Height="25" Command="{Binding ChooseCountryFolderCommand}" Content="Choose country 1 file" Width="120" Margin="5,2,10,2" HorizontalAlignment="Left" ></Button>
             <Button Height="25" Command="{Binding ProcessFileCommand}" Content="Process file" Width="90" Margin="10,2,5,2" HorizontalAlignment="Right"></Button>
         </DockPanel>
     </Grid>

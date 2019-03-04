@@ -6,7 +6,7 @@
         xmlns:yahooSraper="clr-namespace:YahooScraperLogic.Views;assembly=YahooScraperLogic"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" 
-        Title="Shares scraper v.1.0" 
+        Title="Shares scraper v.1.2" 
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"
         MinHeight="250" 

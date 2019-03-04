@@ -9,11 +9,9 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using YahooFinanceApi;
 using YahooScraperLogic.ViewModels;
 
 namespace YahooScraperLogic.Commands
@@ -51,7 +49,7 @@ namespace YahooScraperLogic.Commands
 				return;
 			}
 			parent.FileProcessingLabelData = StringConsts.FileProcessingLabelData_Processing;
-			CountryListData = FilesHelper.GetDataTableFromExcel(parent.CountryListLabelData);
+			CountryListData = FilesHelper.GetDataTableFromExcel(parent.CountryListLabelData, true);
 			CountryData = FilesHelper.GetDataTableFromExcel(parent.WSJCodesFileLabelData, true);
 			if (CountryListData != null)
 			{
@@ -77,9 +75,14 @@ namespace YahooScraperLogic.Commands
 					
 						foreach (var nosValue in nosValues)
 						{
-							var row = (CountryData.Rows.IndexOf(nosValue.Key) + 2);
-							var test = sheet.Cells[row, 28];
-							test.Value = Int64.Parse(nosValue.Value);
+							int rowIndex = CountryData.Rows.IndexOf(nosValue.Key);
+							if (rowIndex == -1)
+							{
+								continue;
+							}
+							var row = (rowIndex + 2);
+							var cell = sheet.Cells[row, 28];
+							cell.Value = Int64.Parse(nosValue.Value);
 						}
 						pck.Save();
 					}
@@ -110,15 +113,16 @@ namespace YahooScraperLogic.Commands
 				}
 			}
 
-			Regex regex = new Regex("(?<=)HEX.*?(?=&)");
+			Regex regex = new Regex("Instrument=[^&]+");
 			Match match = regex.Match(link);
 
 			if (!match.Success)
 			{
 				throw new RegexMatchTimeoutException();
 			}
+			string code = match.Value.Replace("Instrument=", "");
 
-			string webLink = $"http://www.nasdaqomxnordic.com/webproxy/DataFeedProxy.aspx?SubSystem=Prices&Action=GetInstrument&Instrument={match.Value}&inst.an=nos&json=1&app=/shares/microsite-ShareInformation";
+			string webLink = $"http://www.nasdaqomxnordic.com/webproxy/DataFeedProxy.aspx?SubSystem=Prices&Action=GetInstrument&Instrument={code}&inst.an=nos&json=1&app=/shares/microsite-ShareInformation";
 
 			string url = Uri.EscapeUriString(webLink);
 			string doc = "";
